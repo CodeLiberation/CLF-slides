@@ -5,27 +5,26 @@ float playerX;
 float playerY;
 float playerRadius;
 float playerSpeed;
-
-// construct an instance of our BorderCollide class
-BorderCollide collider;
-
 bool isHoldingObject;
 
 int score;
 int scoreX;
 int scoreY;
-
 float goalX;
 float goalY;
 float goalRadius;
 
-float objectX[10];
-float objectY[10];
-bool objectIsHeld[10];
-bool objectInGoal[10];
+const int numofObj = 10;
+float objectX[numofObj];
+float objectY[numofObj];
+bool objectIsHeld[numofObj];
+bool objectInGoal[numofObj];
 float objectRadius;
-float objectSpeedX[10];
-float objectSpeedY[10];
+float objectSpeedX[numofObj];
+float objectSpeedY[numofObj];
+
+// construct an instance of our BorderCollide class
+BorderCollide collider;
 
 ofTrueTypeFont font;
 
@@ -64,7 +63,7 @@ void testApp::setup(){
     font.loadFont("Biko_Regular.otf", 24);
     
     //build all of the little ball objects that the player will pick up
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < numofObj; i++) {
         //set their positions at random points within the width of the screen
         objectX[i] = ofRandom(ofGetWidth());
         objectY[i] = ofRandom(ofGetWidth());
@@ -90,7 +89,7 @@ void testApp::update(){
     playerX = player_pos.x;
     playerY = player_pos.y;
     
-    for (int i = 0; i < 10; i++) {        
+    for (int i = 0; i < numofObj; i++) {        
        
         //sets the object position to be the same as the players position if object is held
         if (objectIsHeld[i]) {
@@ -153,7 +152,7 @@ void testApp::draw(){
     ofCircle(playerX, playerY, playerRadius);
     
     ofSetColor(255, 151, 0);
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < numofObj; i++) {
         ofCircle(objectX[i], objectY[i], objectRadius);
     }
     
