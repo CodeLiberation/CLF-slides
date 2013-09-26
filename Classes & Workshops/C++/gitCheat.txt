@@ -1,0 +1,448 @@
+
+
+to roll back to a specific commit
+git reset --hard (takes me back one)
+
+
+git reset --hard commitNumberhere (rolls back to that commit)
+
+
+
+
+~~~   GIT   ~~~
+
+
+HEAD — most recent commit in current branch
+
+HEAD~ — refers to previous commit
+
+HEAD~2 — refers to two commits back
+
+
+
+commit = change
+
+.. = specify a range of commits
+ 
+origin .. master = all commits to master, since it diverges from origin
+
+
+
+git log HEAD~3
+
+
+git log by file name
+
+git log makefile
+
+
+Git allows you to filter the log output according to which files are modified by listing them after --
+Also by date:
+
+git log --since “2 weeks ago”
+
+git log --until “yesterday”
+
+
+
+-n or --max limit number of commits to be displayed
+
+git log -n3
+
+
+
+More detailed info (how many files changed):
+
+git log --stat --max-count=3
+
+
+
+You can also use option for identifying commits shown earlier to see actual changes:
+
+git log -p -n1 13cd136b
+
+(13cd136b is the “commit ID”)
+
+
+
+...or to see all info:
+
+git.show 13cd136b
+
+git has a consistent and straightforward approach to dealing with the options you can pass as commands:
+
+
+
+* most have long names; long commands begin with -- :
+
+git log --max-count=3
+
+
+
+* some have short names; short commands begin with - :
+
+-n3 instead of --max-count=3
+
+* some short commands, such as p (for “patch”), have no long command equivalent.
+
+
+
+* option naming is consistent across commands.
+
+
+
+You can edit files directly from git:
+
+$sed -i ‘/printf1s””/”n” hello.c
+
+
+
+git status lets us know which files have changed:
+
+git status # on branch master tells us master branch will change
+
+
+
+A branch in git is a name that points to a specific commit.  To see actual changes made:
+
+git diff
+
+
+
+Creating a git configuration file:
+
+git config --global user.name “yourname”
+
+git config -global user.email “your@email.com”
+
+
+
+To commit all of the tracked changes:
+
+git commit -a
+
+
+To add new files, do so before committing:
+
+git add file.fl
+
+
+
+To commit:
+
+git commit
+
+
+
+Remove like normal; git will figure it out.
+rm fileNamehere 
+
+To fix a broken commit with a bad commit message:
+
+git commit --amend
+
+
+
+To examine changes made before pulling them into local repo
+
+git fetch
+
+
+
+After you decide you’re OK with the changes:
+
+git pull
+
+...is effectively a combination of fetch and merge.
+
+
+
+Most convenient way to see cahnges:
+
+git log master .. origin
+
+
+
+To see GUI for changes:
+
+gitk --all
+
+
+
+If we are happy with changes:
+
+git merge origin
+
+:wp! — get out of Unix text editor
+:q sometimes works for log 
+
+
+fast forward — special case operation performed by git merge where a branch can be advanced along a linear sequence.  This happens when pull changes a build directly on top of the same commit you have as your most recent commit—.  If so, you will have to conflict resolve.
+
+
+
+Pull changes from other repo...this is useful when someone is working on experimental changes:
+
+git remote add newreponame ../repdirectory
+
+
+
+Then you can pull all of the changes in the new repo into your local version.  So:
+
+git remote add fred ../my-repo
+
+git fetch fred
+
+
+
+...now we’d have a repo fred in folder my-repo to check out, leaving our code unaltered.
+
+
+
+We can also list all known remote-tracking branches with:
+
+git branch -r
+
+
+
+Checking out previous revisions (by commit ID):
+
+git checkout 0a363bfs
+
+...great alone to just compare history.
+
+
+
+To make a new branch:
+
+git checkout master
+
+
+
+PUSHING:  You create a bare shared repo and push your commits to it (-rf = recursive, force):
+
+rm Game-bare -rf
+
+ls -all
+
+
+
+then:
+
+git commit -a -m “message here”
+
+(this avoids having to use the Unix editor to add a message)
+
+
+
+Ctrl-C gets you out of weird menus.
+
+
+
+Unix special characters to avoid include ! $ ‘ “
+
+
+
+Print file with each person’s name next to each change:
+
+git blame filename
+
+
+
+Gives you the middle version within a date range (repeat over smaller date ranges to help find bugs):
+
+git bisect
+
+
+
+Ctrl-R — reverse search through commit history
+
+Go through previous comand
+
+
+
+git reset --hard
+
+resets your git head pointer incase you end up with it messed up
+
+
+
+git rm filename.fla
+
+stops git from tracking a file
+
+
+
+
+
+Everything you’d ever want to know about branching
+
+http://book.git-scm.com/3_basic_branching_and_merging.html
+
+Basic Branching and MergingA single git repository can maintain multiple branches of development. To create a new branch named "experimental", use
+
+$ git branch experimental
+
+
+
+If you now run
+
+$ git branch
+
+
+
+you'll get a list of all existing branches:
+
+experimental
+
+* master
+
+
+
+The "experimental" branch is the one you just created, and the "master" branch is a default branch that was created for you automatically. The asterisk marks the branch you are currently on; type
+
+$ git checkout experimental
+
+
+
+to switch to the experimental branch. Now edit a file, commit the change, and switch back to the master branch:
+
+(edit file)
+
+$ git commit -a
+
+$ git checkout master
+
+
+
+Check that the change you made is no longer visible, since it was made on the experimental branch and you're back on the master branch.
+
+You can make a different change on the master branch:
+
+(edit file)
+
+$ git commit -a
+
+
+
+at this point the two branches have diverged, with different changes made in each. To merge the changes made in experimental into master, run
+
+$ git merge experimental
+
+
+
+If the changes don't conflict, you're done. If there are conflicts, markers will be left in the problematic files showing the conflict;
+
+$ git diff
+
+
+
+will show this. Once you've edited the files to resolve the conflicts,
+
+$ git commit -a
+
+
+
+will commit the result of the merge. Finally,
+
+$ gitk
+
+
+
+will show a nice graphical representation of the resulting history.
+
+At this point you could delete the experimental branch with
+
+$ git branch -d experimental
+
+
+
+This command ensures that the changes in the experimental branch are already in the current branch.
+
+If you develop on a branch crazy-idea, then regret it, you can always delete the branch with
+
+$ git branch -D crazy-idea
+
+
+
+Branches are cheap and easy, so this is a good way to try something out.
+
+How to mergeYou can rejoin two diverging branches of development using git merge:
+
+$ git merge branchname
+
+
+
+merges the changes made in the branch "branchname" into the current branch. If there are conflicts--for example, if the same file is modified in two different ways in the remote branch and the local branch--then you are warned; the output may look something like this:
+
+$ git merge next
+
+100% (4/4) done
+
+Auto-merged file.txt
+
+CONFLICT (content): Merge conflict in file.txt
+
+Automatic merge failed; fix conflicts and then commit the result.
+
+
+
+Conflict markers are left in the problematic files, and after you resolve the conflicts manually, you can update the index with the contents and run git commit, as you normally would when modifying a file.
+
+If you examine the resulting commit using gitk, you will see that it has two parents: one pointing to the top of the current branch, and one to the top of the other branch.
+
+Resolving a mergeWhen a merge isn't resolved automatically, git leaves the index and the working tree in a special state that gives you all the information you need to help resolve the merge.
+
+Files with conflicts are marked specially in the index, so until you resolve the problem and update the index, git commit will fail:
+
+$ git commit
+
+file.txt: needs merge
+
+
+
+Also, git status will list those files as "unmerged", and the files with conflicts will have conflict markers added, like this:
+
+<<<<<<< HEAD:file.txt
+
+Hello world
+
+=======
+
+Goodbye
+
+>>>>>>> 77976da35a11db4580b80ae27e8d65caf5208086:file.txt
+
+
+
+All you need to do is edit the files to resolve the conflicts, and then
+
+$ git add file.txt
+
+$ git commit
+
+
+
+Note that the commit message will already be filled in for you with some information about the merge. Normally you can just use this default message unchanged, but you may add additional commentary of your own if desired.
+
+The above is all you need to know to resolve a simple merge. But git also provides more information to help resolve conflicts:
+
+Undoing a mergeIf you get stuck and decide to just give up and throw the whole mess away, you can always return to the pre-merge state with
+
+$ git reset --hard HEAD
+
+
+
+Or, if you've already committed the merge that you want to throw away,
+
+$ git reset --hard ORIG_HEAD
+
+
+
+However, this last command can be dangerous in some cases--never throw away a commit if that commit may itself have been merged into another branch, as doing so may confuse further merges.
+
+Fast-forward mergesThere is one special case not mentioned above, which is treated differently. Normally, a merge results in a merge commit with two parents, one for each of the two lines of development that were merged.
+
+However, if the current branch has not diverged from the other--so every commit present in the current branch is already contained in the other--then git just performs a "fast forward"; the head of the current branch is moved forward to point at the head of the merged-in branch, without any new commits being created.
+
+gitcast:c6-branch-merge
