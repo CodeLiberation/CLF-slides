@@ -1,5 +1,5 @@
 .files {
-	padding:0 80px 20px;
+	padding:0 100px 20px;
 	
 	ul, li {
 		list-style:none;
@@ -7,10 +7,34 @@
 		padding:0;
 	}
 	
+	.nav {
+		padding:0 0 40px;
+		.text-center;
+		
+		ul, li {
+			display:inline-block;
+		}
+		
+		li {
+			&:after {
+				content:"-";
+				margin:0 5px;
+				color:@gray;
+			}
+			
+			&:last-of-type {
+				&:after {
+					content:"";
+					margin:0;
+				}
+			}
+		}
+	}
+	
 	.files-list {		
 		h2 {
 			padding:10px 20px;
-			margin:0 0 15px;
+			margin:0;
 			border-bottom:1px solid fade(@black, 25%);
 			.clearfix;
 			color:@white;
@@ -19,7 +43,6 @@
 		}
 		
 		h3 {
-			line-height:1em;
 			margin-bottom:.5em;
 		}
 		
@@ -30,21 +53,17 @@
 		> li {
 			margin-bottom:30px;
 			.border-radius;
-			background:fade(@black, 2%);
-			padding:0 0 20px;
+			background:fade(@black, 4%);
 			.clearfix;
 			border-bottom:1px solid fade(@black, 15%);
 			
-			> ul {
-				padding:0 20px;
-				
+			> ul {				
 				> li {
-					padding-bottom:5px;
-					border-bottom:2px dotted fade(@black, 15%);
+					padding:15px 20px 20px;
+					border-bottom:1px dotted fade(@black, 10%);
 					
 					&:last-child {
 						border-bottom:0;
-						padding-bottom:0;
 					}
 				}
 			}

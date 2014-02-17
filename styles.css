@@ -2474,13 +2474,13 @@ html {
 body {
   font-family: "Bariol", Helvetica, Arial, sans-serif;
   font-size: 17px;
-  line-height: 1.5;
   color: #000000;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
+  padding: 100px 0 0;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1000px;
   background: #ffffff;
   border-left: 1px solid #b6115a;
   border-right: 1px solid #b6115a;
@@ -2525,10 +2525,15 @@ a:visited:focus {
   color: #e91673;
 }
 header {
-  padding: 80px 80px 0;
+  margin: 0 100px 30px;
+  padding: 0 0 50px;
+  border-bottom: 1px dashed #5bc8e4;
+}
+header h1 {
+  margin: 0;
 }
 .footer {
-  padding: 20px 80px;
+  padding: 20px 100px;
   text-align: center;
   border-top: 1px solid rgba(102, 102, 102, 0.15);
   background: rgba(255, 255, 255, 0.75);
@@ -2583,7 +2588,7 @@ header {
   margin-bottom: 15px;
 }
 .files {
-  padding: 0 80px 20px;
+  padding: 0 100px 20px;
 }
 .files ul,
 .files li {
@@ -2591,9 +2596,26 @@ header {
   margin: 0;
   padding: 0;
 }
+.files .nav {
+  padding: 0 0 40px;
+  text-align: center;
+}
+.files .nav ul,
+.files .nav li {
+  display: inline-block;
+}
+.files .nav li:after {
+  content: "-";
+  margin: 0 5px;
+  color: #666666;
+}
+.files .nav li:last-of-type:after {
+  content: "";
+  margin: 0;
+}
 .files .files-list h2 {
   padding: 10px 20px;
-  margin: 0 0 15px;
+  margin: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   zoom: 1;
   color: #ffffff;
@@ -2611,7 +2633,6 @@ header {
   clear: both;
 }
 .files .files-list h3 {
-  line-height: 1em;
   margin-bottom: .5em;
 }
 .files .files-list a {
@@ -2622,8 +2643,7 @@ header {
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.02);
-  padding: 0 0 20px;
+  background: rgba(0, 0, 0, 0.04);
   zoom: 1;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -2635,14 +2655,10 @@ header {
 .files .files-list > li:after {
   clear: both;
 }
-.files .files-list > li > ul {
-  padding: 0 20px;
-}
 .files .files-list > li > ul > li {
-  padding-bottom: 5px;
-  border-bottom: 2px dotted rgba(0, 0, 0, 0.15);
+  padding: 15px 20px 20px;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
 }
 .files .files-list > li > ul > li:last-child {
   border-bottom: 0;
-  padding-bottom: 0;
 }
