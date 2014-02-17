@@ -1,0 +1,54 @@
+.files {
+	padding:0 80px 20px;
+	
+	ul, li {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	
+	.files-list {		
+		h2 {
+			padding:10px 20px;
+			margin:0 0 15px;
+			border-bottom:1px solid fade(@black, 25%);
+			.clearfix;
+			color:@white;
+			background:@blue;
+			.border-radius(12px 12px 0 0;)
+		}
+		
+		h3 {
+			line-height:1em;
+			margin-bottom:.5em;
+		}
+		
+		a {
+			display:inline-block;
+		}
+		
+		> li {
+			margin-bottom:30px;
+			.border-radius;
+			background:fade(@black, 2%);
+			padding:0 0 20px;
+			.clearfix;
+			border-bottom:1px solid fade(@black, 15%);
+			
+			> ul {
+				padding:0 20px;
+				
+				> li {
+					padding-bottom:5px;
+					border-bottom:2px dotted fade(@black, 15%);
+					
+					&:last-child {
+						border-bottom:0;
+						padding-bottom:0;
+					}
+				}
+			}
+		}
+		
+	}
+}

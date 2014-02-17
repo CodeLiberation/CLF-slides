@@ -1,0 +1,97 @@
+html, body {
+	margin:0;
+	padding:0;
+}
+
+html {
+	background:@pink;
+}
+
+body {
+	font-family: @sans-serif;
+	font-size: @p-size;
+	line-height: 1.5;
+	color: @black;
+	.text-stroke(@black);
+	margin:0 auto;
+	max-width:900px;
+	background:@white;
+	border-left:1px solid darken(@pink,20%);
+	border-right:1px solid darken(@pink,20%);
+}
+
+h1 {
+	margin:0 0 1em;
+	font-weight:@light-weight;
+	
+	#logo {
+		border:0;
+		font-size:0;
+		background:url(images/logo.png) no-repeat;
+		width:206px;
+		height:152px;
+		display:block;
+		margin:0 auto 20px;
+		overflow:hidden;
+		text-indent:1000px;
+	}
+}
+
+h2 {
+	margin:0 0 1em;
+}
+
+h3, p {
+	margin:0 0 .25em;
+}
+
+p {
+	&:last-child {
+		margin-bottom:0;
+	}
+}
+
+a, a:visited {
+	text-decoration: none;
+	border-bottom:1px solid @link-border-color;
+	color: @link-color;
+
+	/* on hover */
+	&:hover, &:focus {
+		color: @link-hover;
+	}
+
+	/* on click */
+	&:active {
+
+	}
+}
+
+header {
+	padding:80px 80px 0;
+}
+
+.footer {
+	padding:20px 80px;
+	.text-center;
+	border-top:1px solid fade(@gray,15%);
+	background:fade(@white,75%);
+	.clearfix;
+
+	p {
+		color:@gray;
+		margin-bottom:5px;
+	}
+	nav {
+		ul.nav {background:none; margin:0 0 5px;
+			li {float:none; display:inline-block; margin:0 10px 0 0;
+				a {font-family:@social-icon; .ss-icon; background:none; font-size:@label-size; color:@blue; .text-stroke(@blue); border:0;}
+
+				&:first-child {}
+
+				&:last-child {margin-right:0;}
+			}
+		}
+	}
+	.paypal-button {margin-bottom:15px;}
+}
