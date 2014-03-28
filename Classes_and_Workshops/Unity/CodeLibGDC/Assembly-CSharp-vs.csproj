@@ -48,8 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\HitByBallon.cs" />
      <Compile Include="Assets\KeyControl.cs" />
+     <Compile Include="Assets\Kitten_.cs" />
      <Compile Include="Assets\Kittens.cs" />
      <Compile Include="Assets\ManyStars.cs" />
+     <Compile Include="Assets\ManyStars_.cs" />
      <Compile Include="Assets\RandomStars.cs" />
      <Compile Include="Assets\Variables.cs" />
      <Compile Include="Assets\health.cs" />

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class health : MonoBehaviour {
     int myHealth = 0;
+   
     public GUIText playerHealth; 
    
 	// Use this for initialization
