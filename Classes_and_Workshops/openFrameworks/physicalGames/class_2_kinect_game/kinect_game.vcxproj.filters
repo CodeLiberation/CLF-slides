@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<ClCompile Include="src\testApp.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="src\main.cpp">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\..\addons\ofxKinectCommonBridge\src\ofxKinectCommonBridge.cpp">
+			<Filter>addons\ofxKinectCommonBridge\src</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<Filter Include="src">
+			<UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons">
+			<UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectCommonBridge">
+			<UniqueIdentifier>{C749605C-98A3-B486-4B56-9CE4}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectCommonBridge\src">
+			<UniqueIdentifier>{D4E44C3F-AECF-C926-C35D-D496}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectCommonBridge\libs">
+			<UniqueIdentifier>{907DB092-2D6F-F552-622D-7488}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectCommonBridge\libs\KinectCommonBridge">
+			<UniqueIdentifier>{1F742F8B-805C-311C-BEFD-591B}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="addons\ofxKinectCommonBridge\libs\KinectCommonBridge\include">
+			<UniqueIdentifier>{EB8368C2-9593-7054-3E4E-054E}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="src\testApp.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectCommonBridge\src\ofxKinectCommonBridge.h">
+			<Filter>addons\ofxKinectCommonBridge\src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\include\KinectCommonBridgeLib.h">
+			<Filter>addons\ofxKinectCommonBridge\libs\KinectCommonBridge\include</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<ResourceCompile Include="icon.rc" />
+	</ItemGroup>
+</Project>
