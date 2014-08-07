@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Catch the Meat!</title>
+    <script src="scripts/phaser.min.js"></script>
+    <script src="scripts/game.js"></script>
+    
+    <!-- Added CSS so the margins don't increase the page size. -->
+    <style>
+      body {
+        margin:0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //Game width & height -- these will not change, so they're capitalized (naming convention)
+      GAME_WIDTH = 640;
+      GAME_HEIGHT = 960;
+      
+      //Instantiate the game
+      var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO);
+      
+      //Create a gameplay state and tell the game to start on that state
+      game.state.add('GamePlay', myGame.GamePlay);
+      game.state.start('GamePlay');
+    </script>
+  </body>
+</html>
