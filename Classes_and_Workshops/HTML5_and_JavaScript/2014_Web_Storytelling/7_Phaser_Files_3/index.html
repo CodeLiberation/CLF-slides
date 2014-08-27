@@ -1,0 +1,39 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>A Little About Me</title>
+    <script src="scripts/phaser.min.js"></script>
+    <script src="scripts/GlobalVariables.js"></script>
+    <script src="scripts/Preload.js"></script>
+    <script src="scripts/MainMenu.js"></script>
+    <script src="scripts/GamePlay1.js"></script>
+    <script src="scripts/GamePlay2.js"></script>
+    <script src="scripts/WinState.js"></script>
+    <script src="scripts/LoseState.js"></script>
+
+    <!-- Added CSS so the margins don't increase the page size. -->
+    <style>
+      body {
+        margin:0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //Game width & height -- these will not change, so they're capitalized (naming convention)
+      GAME_WIDTH = 640;
+      GAME_HEIGHT = 480;
+
+      //Instantiate the game
+      var game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.CANVAS, '', 'Preload', false, false);
+
+      //Create game states
+      game.state.add('Preload', myGame.Preload);
+      game.state.add('MainMenu', myGame.MainMenu);
+      game.state.add('GamePlay1', myGame.GamePlay1);
+      game.state.add('GamePlay2', myGame.GamePlay2);
+      game.state.add('WinState', myGame.WinState);
+      game.state.add('LoseState', myGame.LoseState);
+    </script>
+  </body>
+</html>
