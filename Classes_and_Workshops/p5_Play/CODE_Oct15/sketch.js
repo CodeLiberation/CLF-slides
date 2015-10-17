@@ -60,9 +60,10 @@ function draw() {
   //unicorn collides against all the sprites in the group obstacles
   unicorn.collide(obstacles);
   
-  
+  // change the obstacle when you shoot poo at it
+  // NOT YET RESOLVED
   if (Poo.collide(obstacles)) {
-    obstacles.scale = 0.1;
+    obstacles.remove();
   };
 
   //I can define a function to be called upon collision, overlap, displace or bounce
@@ -88,6 +89,7 @@ function draw() {
 drawSprites();
 }
 
+// when mouse is pressed, check if there is rainbow poo in store, if yes then allow a shot
 function mousePressed() {
   if (rainbowCount >= 1) {
     var rainbow = createSprite(mouseX + unicorn.width / 2 + 20, mouseY, 20, 20);
@@ -107,19 +109,22 @@ function collect(collector, collected) {
   score += 1;
   //collector is another name for unicorn
   //show the animation
-  // collector.changeAnimation("stretch");
+  //collector.changeAnimation("stretch");
   //collector.animation.rewind();
   //collected is the sprite in the group iceCream that triggered 
   //the event
   collected.remove();
 }
 
+// socreboard position
 function scoreBoard() {
-  rect(50, 50, 55, 70);
+  rect(50, 65, 200, 45);
   fill(255);
   //scoreBoardCollider = createSprite(55, 70, 55, 70);
-  textSize(25);
+  textSize(15);
   fill(0);
-  text(score, 70, 80);
-  text(rainbowCount, 70, 100);
+  text("Collect 5 ice Creams to give you one Rainbow Poo", 60, 40);
+  text("Press the mouse to shoot poo at obstacles", 60, 60);
+  text("number of iceCreams " + score, 70, 80);
+  text("number of rainbowPoo " + rainbowCount, 70, 100);
 }
