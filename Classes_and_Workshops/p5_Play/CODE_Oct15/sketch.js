@@ -32,25 +32,25 @@ function setup() {
   //unicorn.addAnimation("stretch", "assets/unicorn_stretching0001.png", "assets/unicorn_stretching0008.png");
 
   //create 2 groups
-  obstacles = new Group();
-  iceCream = new Group();
-  Poo = new Group();
+  obstaclesGroup = new Group();
+  iceCreamGroup = new Group();
+  pooGroup = new Group();
 
   for (var i = 0; i < 4; i++) {
     var box = createSprite(random(0, width), random(0, height));
     box.scale = 0.5;
     box.addImage(obstaclesSprite);
-    obstacles.add(box);
+    obstaclesGroup.add(box);
   }
 }
 
 function draw() {
   background(255, 255, 255);
   if (frameCount % 80 == Math.floor(random(30))) {
-    var dot = createSprite(random(0, width), random(0, height));
-    dot.scale = 0.3;
-    dot.addImage(iceCreamSprite);
-    iceCream.add(dot);
+    var iceCream = createSprite(random(0, width), random(0, height));
+    iceCream.scale = 0.3;
+    iceCream.addImage(iceCreamSprite);
+    iceCreamGroup.add(iceCream);
   }
 
   //if no arrow input set velocity to 0
@@ -58,20 +58,25 @@ function draw() {
   unicorn.velocity.y = (mouseY - unicorn.position.y);
 
   //unicorn collides against all the sprites in the group obstacles
-  unicorn.collide(obstacles);
-  
+  unicorn.collide(obstaclesGroup);
+  // if(pooGroup.collide(obstaclesGroup)){
+  //   box.remove();
+  // }
+  for (var i = 0; i < obstaclesGroup.length; i++) {
+      var obstacles = obstaclesGroup[i];
+      pooGroup.overlap(obstacles, obstacleGrow);
+    
+    }
+
   // change the obstacle when you shoot poo at it
   // NOT YET RESOLVED
-  if (Poo.collide(obstacles)) {
-    obstacles.remove();
-  };
 
   //I can define a function to be called upon collision, overlap, displace or bounce
   //see collect() below
-  unicorn.overlap(iceCream, collect);
-  
+  unicorn.overlap(iceCreamGroup, collect);
+
   // picking up 5 ice creams gives you 1 rainbow poo
-  if (score == 5) {
+  if (score == 2) {
     rainbowCount += 1;
     score = 0;
   }
@@ -83,10 +88,10 @@ function draw() {
   // }
 
   scoreBoard();
- 
+
   //text(iceCreamScore, 80, 100);
 
-drawSprites();
+  drawSprites();
 }
 
 // when mouse is pressed, check if there is rainbow poo in store, if yes then allow a shot
@@ -94,10 +99,17 @@ function mousePressed() {
   if (rainbowCount >= 1) {
     var rainbow = createSprite(mouseX + unicorn.width / 2 + 20, mouseY, 20, 20);
     rainbow.addImage(rainbowSprite);
-    Poo.add(rainbow);
+    pooGroup.add(rainbow);
     rainbow.scale = 0.2;
     rainbow.setSpeed(random(1, 3), random(3, 5));
     rainbowCount -= 1;
+    
+    // for (var i = 0; i < obstaclesGroup.length; i++) {
+    //   var obstacles = obstaclesGroup[i];
+    //   if (pooGroup.overlap(obstacles)) {
+    //     obstacles.remove();
+    //   }
+    // }
   }
 }
 
@@ -114,6 +126,11 @@ function collect(collector, collected) {
   //collected is the sprite in the group iceCream that triggered 
   //the event
   collected.remove();
+}
+
+// function that 
+function obstacleGrow(collector, collected) {
+  collected.scale = 1.5;
 }
 
 // socreboard position
