@@ -12,6 +12,7 @@ var rainbowSprite;
 var score = 0;
 var rainbowCount = 0;
 var Poo;
+var time;
 
 function preload() {
   unicornSprite = loadImage("images/unicornPlaceholder.jpg")
@@ -89,8 +90,6 @@ function draw() {
 
   scoreBoard();
 
-  //text(iceCreamScore, 80, 100);
-
   drawSprites();
 }
 
@@ -128,9 +127,17 @@ function collect(collector, collected) {
   collected.remove();
 }
 
-// function that 
+// function that sets an animation of a growing beanstalk
 function obstacleGrow(collector, collected) {
-  collected.scale = 1.5;
+  // first remove collider object
+  collected.remove();
+  collector.remove();
+  // set a new animation sprite in the position of the item removed
+  time = createSprite(collected.position.x, collected.position.y);
+  time.scale = 0.5;
+  time.addAnimation("clock", "images/LED_digit_0.png", "images/LED_digit_9.png");
+  unicorn.collide(time);
+  //text(iceCreamScore, 80, 100);
 }
 
 // socreboard position
