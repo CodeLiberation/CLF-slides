@@ -13,33 +13,36 @@ var score = 0;
 var rainbowCount = 0;
 var Poo;
 var time;
+var beanLastSprite;
+var beanStalk;
+var beanCollider;
 
 function preload() {
-  unicornSprite = loadImage("images/unicornPlaceholder.jpg")
-  obstaclesSprite = loadImage("images/LED_digit_1.png")
-  iceCreamSprite = loadImage("images/tools_saw.png")
+  unicornSprite = loadImage("images/unicorn.png")
+  obstaclesSprite = loadImage("images/beanStalk_1.png")
+  iceCreamSprite = loadImage("images/iceCream.png")
   rainbowSprite = loadImage("images/rainbowPoo.png")
+  beanLastSprite = loadImage("images/bean_5.png")
 }
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(1000, 800);
+  
+  console.log(obstaclesSprite.height);
 
   //create the unicorn sprite
   unicorn = createSprite(800, 600);
   unicorn.scale = 0.1;
   unicorn.addImage(unicornSprite);
-  //unicorn.addAnimation("normal", "assets/unicorn_normal0001.png", "assets/unicorn_normal0003.png");
-
-  //unicorn.addAnimation("stretch", "assets/unicorn_stretching0001.png", "assets/unicorn_stretching0008.png");
 
   //create 2 groups
   obstaclesGroup = new Group();
   iceCreamGroup = new Group();
   pooGroup = new Group();
 
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 6; i++) {
     var box = createSprite(random(0, width), random(0, height));
-    box.scale = 0.5;
+    box.scale = 0.2;
     box.addImage(obstaclesSprite);
     obstaclesGroup.add(box);
   }
@@ -60,21 +63,18 @@ function draw() {
 
   //unicorn collides against all the sprites in the group obstacles
   unicorn.collide(obstaclesGroup);
-  // if(pooGroup.collide(obstaclesGroup)){
-  //   box.remove();
-  // }
+  
+  // add each obstacle to a group, and then use the callback function
+  // within the callback we can set the obstacle change when you shoot poo at it
   for (var i = 0; i < obstaclesGroup.length; i++) {
-      var obstacles = obstaclesGroup[i];
-      pooGroup.overlap(obstacles, obstacleGrow);
-    
-    }
+    var obstacles = obstaclesGroup[i];
+    pooGroup.overlap(obstacles, obstacleGrow);  
+  
+  }
 
-  // change the obstacle when you shoot poo at it
-  // NOT YET RESOLVED
-
-  //I can define a function to be called upon collision, overlap, displace or bounce
-  //see collect() below
+  // set callback fucntion when unicorn picks up ice cream
   unicorn.overlap(iceCreamGroup, collect);
+
 
   // picking up 5 ice creams gives you 1 rainbow poo
   if (score == 2) {
@@ -82,14 +82,10 @@ function draw() {
     score = 0;
   }
 
-  //if the animation is "stretch" and it reached its last frame
-  // if(unicorn.getAnimationLabel() == "stretch" && unicorn.animation.getFrame() == unicorn.animation.getLastFrame())
-  // {
-  //   unicorn.changeAnimation("normal");
-  // }
-
+  // draw the scoreboard;
   scoreBoard();
 
+  // make sure sprites are drawn
   drawSprites();
 }
 
@@ -99,10 +95,10 @@ function mousePressed() {
     var rainbow = createSprite(mouseX + unicorn.width / 2 + 20, mouseY, 20, 20);
     rainbow.addImage(rainbowSprite);
     pooGroup.add(rainbow);
-    rainbow.scale = 0.2;
+    rainbow.scale = 0.25;
     rainbow.setSpeed(random(1, 3), random(3, 5));
     rainbowCount -= 1;
-    
+
     // for (var i = 0; i < obstaclesGroup.length; i++) {
     //   var obstacles = obstaclesGroup[i];
     //   if (pooGroup.overlap(obstacles)) {
@@ -118,12 +114,6 @@ function mousePressed() {
 //against which the overlap, collide, bounce, or displace is checked
 function collect(collector, collected) {
   score += 1;
-  //collector is another name for unicorn
-  //show the animation
-  //collector.changeAnimation("stretch");
-  //collector.animation.rewind();
-  //collected is the sprite in the group iceCream that triggered 
-  //the event
   collected.remove();
 }
 
@@ -132,12 +122,18 @@ function obstacleGrow(collector, collected) {
   // first remove collider object
   collected.remove();
   collector.remove();
-  // set a new animation sprite in the position of the item removed
-  time = createSprite(collected.position.x, collected.position.y);
-  time.scale = 0.5;
-  time.addAnimation("clock", "images/LED_digit_0.png", "images/LED_digit_9.png");
-  unicorn.collide(time);
-  //text(iceCreamScore, 80, 100);
+  
+  // set a new animation sprite 
+  // create the bean stalk animation obeject in the position of the item removed
+  // as the bean sprite has a different centre position to the animation, this must be adjusted
+  beanStalk = createSprite(collected.position.x, collected.position.y - ((beanLastSprite.height - obstaclesSprite.height) * 0.2 / 2));
+  beanStalk.addAnimation("beanStalk", "images/bean_1.png", "images/bean_5.png");
+  beanStalk.scale = 0.2
+  beanStalk.animation.looping = false;
+  // slowdown animation
+  beanStalk.animation.frameDelay = 6;
+  unicorn.collide(beanStalk);
+
 }
 
 // socreboard position
