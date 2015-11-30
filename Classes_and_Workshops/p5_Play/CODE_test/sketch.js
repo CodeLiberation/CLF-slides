@@ -27,7 +27,7 @@ function preload() {
   unicornSprite = loadImage("images/unicorn.png");
   obstaclesSprite = loadImage("images/beanStalk_1.png");
   iceCreamSprite = loadImage("images/iceCream.png");
-  rainbowSprite = loadImage("images/rainbowPoo.png");
+  rainbowSprite = loadImage("images/rainbowPoo.jpg");
   beanLastSprite = loadImage("images/bean_5.png");
   InstructionsFont = loadFont("fonts/OstrichSans-Black.otf");
   beanAnim = loadAnimation("images/bean_1.png", "images/bean_5.png");
@@ -37,18 +37,16 @@ function preload() {
 function setup() {
   createCanvas(1200, 750);
    
-
-  
-  
 }
 
 function draw() {
   
   background(255);
     //beanAnim.play();
-    beanAnim.scale= 0.33;
-    animation(beanAnim, 300, 300);
+    var poo = image(rainbowSprite, 100, 100);
+    animation(beanAnim, 600, 300);
     beanAnim.looping = true;
+    beanAnim.frameDelay = 10
     
   
   
@@ -63,6 +61,7 @@ function mousePressed(){
   beanAnimSprite.scale = 0.3;
   beanAnimSprite.addAnimation("beanStalk", beanAnim);
   beanAnimSprite.animation.looping = false;
+  beanAnimSprite.animation.frameDelay = 10;
   
 }
 

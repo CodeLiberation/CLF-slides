@@ -206,9 +206,10 @@ function scoreBoard() {
   fill(90);
   noStroke();
   textSize(20);
+  // text and score can be in same text function, but separated to match alignment
   text("Ice Cream", 35, 50);
-  text("Magic Poop", 35, 80);
   text(score, 140, 50);
+  text("Magic Poop", 35, 80);
   text(rainbowCount, 140, 80);
 }
 
