@@ -2,116 +2,159 @@
 //Collision between groups
 //function called upon collision
 
-var obstacles;
-var iceCream;
-var unicorn;
-var obstaclesSprite;
-var iceCreamSprite;
-var unicornSprite;
-var rainbowSprite;
+var obstacles, iceCream, unicorn, rainbow, time;
+var obstaclesSprite, iceCreamSprite, unicornSprite, rainbowSprite;
 var score = 0;
 var rainbowCount = 0;
-var Poo;
-var time;
-var beanLastSprite;
-var beanStalk;
-var beanCollider;
+var beanLastSprite, beanStalk, beanCollider, obstacles;
+var newGame;
+var mySprites;
+var gameStarts;
+var stalkScore = 0; // game score
 
 function preload() {
-  unicornSprite = loadImage("images/unicorn.png")
-  obstaclesSprite = loadImage("images/beanStalk_1.png")
-  iceCreamSprite = loadImage("images/iceCream.png")
-  rainbowSprite = loadImage("images/rainbowPoo.png")
-  beanLastSprite = loadImage("images/bean_5.png")
+  unicornSprite = loadImage("images/unicorn.png");
+  obstaclesSprite = loadImage("images/beanStalk_1.png");
+  iceCreamSprite = loadImage("images/iceCream.png");
+  rainbowSprite = loadImage("images/rainbowPoo.png");
+  beanLastSprite = loadImage("images/bean_5.png");
+  instructionsFont = loadFont("fonts/OstrichSans-Black.otf");
+  startFont = loadFont("fonts/OstrichSansInline-Italic.otf");
+  bgImage = loadImage("images/grass.png");
+  beanAnim = loadAnimation("images/bean_1.png", "images/bean_5.png");
 }
 
 function setup() {
-  createCanvas(1000, 800);
-  
-  console.log(obstaclesSprite.height);
+  createCanvas(1200, 675);
 
   //create the unicorn sprite
-  unicorn = createSprite(800, 600);
-  unicorn.scale = 0.1;
+  unicorn = createSprite(width / 2, height / 2);
+  unicorn.scale = 0.09;
   unicorn.addImage(unicornSprite);
 
   //create 2 groups
   obstaclesGroup = new Group();
   iceCreamGroup = new Group();
   pooGroup = new Group();
+  beanStalkGroup = new Group();
 
-  for (var i = 0; i < 6; i++) {
-    var box = createSprite(random(0, width), random(0, height));
+  // create beanStalk animation groups
+  for (var i = 0; i < 3; i++) {
+    // keep sprites within bounds of the screen
+    var box = createSprite(random(200, width * 0.7), random(150, height * 0.7));
     box.scale = 0.2;
     box.addImage(obstaclesSprite);
+    box.setCollider("circle", 0, 0, 200);
     obstaclesGroup.add(box);
+
   }
 }
 
 function draw() {
-  background(255, 255, 255);
-  if (frameCount % 80 == Math.floor(random(30))) {
-    var iceCream = createSprite(random(0, width), random(0, height));
-    iceCream.scale = 0.3;
-    iceCream.addImage(iceCreamSprite);
-    iceCreamGroup.add(iceCream);
+
+  for (i = 0; i < allSprites.length; i++) {
+    mySprites = allSprites[i]
   }
 
-  //if no arrow input set velocity to 0
-  unicorn.velocity.x = (mouseX - unicorn.position.x);
-  unicorn.velocity.y = (mouseY - unicorn.position.y);
+  instructionScreen();
 
-  //unicorn collides against all the sprites in the group obstacles
-  unicorn.collide(obstaclesGroup);
-  
-  // add each obstacle to a group, and then use the callback function
-  // within the callback we can set the obstacle change when you shoot poo at it
-  for (var i = 0; i < obstaclesGroup.length; i++) {
-    var obstacles = obstaclesGroup[i];
-    pooGroup.overlap(obstacles, obstacleGrow);  
-  
+  if (gameStarts) {
+    //background(255, 255, 150);
+    image(bgImage, 0, 0);
+
+    //set icecream sprites to generate randomly within 30 framecounts 
+    // and if winning score hasn't been reached
+    if (frameCount % 80 == Math.floor(random(30)) && stalkScore < 3) {
+      var iceCream = createSprite(random(100, width * 0.8), random(100, height * 0.8));
+      iceCream.scale = 0.3;
+      iceCream.addImage(iceCreamSprite);
+      iceCreamGroup.add(iceCream);
+      iceCream.life = 200;
+    }
+
+    // move unicorn sprite using mouse input
+    // if no arrow input set velocity to 0
+    // unicorn.velocity.x = (mouseX - unicorn.position.x) / 8;
+    // unicorn.velocity.y = (mouseY - unicorn.position.y) / 8;
+
+    // unicorn movement using the keyboard
+    if (keyDown(LEFT_ARROW) || unicorn.position.x + 70 >= 1200)
+      unicorn.position.x -= 10;
+
+    if (keyDown(RIGHT_ARROW) || unicorn.position.x - 70 <= 0)
+      unicorn.position.x += 10;
+
+    if (keyDown(UP_ARROW) || unicorn.position.y + 70 >= 675)
+      unicorn.position.y -= 10;
+
+    if (keyDown(DOWN_ARROW) || unicorn.position.y - 70 <= 0)
+      unicorn.position.y += 10;
+
+    //make sure ice creams don't get placed where beans and beanstalks are
+    unicorn.collide(obstaclesGroup);
+    if (iceCreamGroup.collide(obstaclesGroup) || iceCreamGroup.collide(beanStalkGroup)) {
+      iceCreamGroup.remove();
+    }
+
+    for (var i = 0; i < beanStalkGroup.length; i++) {
+      beans = beanStalkGroup[i];
+      unicorn.collide(beans);
+    }
+
+    // picking up 3 ice creams gives you 1 rainbow poo, score resets to 0
+    if (score == 3) {
+      rainbowCount += 1;
+      score = 0;
+    }
+
+    // the x key is the action key
+    if (keyWentDown("x")) {
+      shootPoo();
+    }
+
+    // add each obstacle to a group, and then use the callback function
+    // within the callback we can set the obstacle change when you shoot poo at it
+    for (var j = 0; j < obstaclesGroup.length; j++) {
+      obstacles = obstaclesGroup[j];
+      pooGroup.overlap(obstacles, obstacleGrow);
+    }
+
+    if (stalkScore == 3) {
+      background(255, 255, 150);
+      mySprites.remove();
+      textFont(instructionsFont);
+      textSize(30);
+      text("Hooray! Unicorn has climbed up the bean stalks", width / 2 - 250, height / 2);
+    }
+    // set callback fucntion when unicorn picks up ice cream
+    unicorn.overlap(iceCreamGroup, collect);
+
+    // draw the scoreboard;
+    scoreBoard();
+
+    // make sure sprites are drawn
+    drawSprites();
   }
-
-  // set callback fucntion when unicorn picks up ice cream
-  unicorn.overlap(iceCreamGroup, collect);
-
-
-  // picking up 5 ice creams gives you 1 rainbow poo
-  if (score == 2) {
-    rainbowCount += 1;
-    score = 0;
-  }
-
-  // draw the scoreboard;
-  scoreBoard();
-
-  // make sure sprites are drawn
-  drawSprites();
 }
 
+
 // when mouse is pressed, check if there is rainbow poo in store, if yes then allow a shot
-function mousePressed() {
+function shootPoo() {
   if (rainbowCount >= 1) {
-    var rainbow = createSprite(mouseX + unicorn.width / 2 + 20, mouseY, 20, 20);
+    rainbow = createSprite(unicorn.position.x + unicorn.width / 2 + 20, unicorn.position.y, 20, 20);
     rainbow.addImage(rainbowSprite);
     pooGroup.add(rainbow);
     rainbow.scale = 0.25;
-    rainbow.setSpeed(random(1, 3), random(3, 5));
+    rainbow.setSpeed(2, random(3, 5));
+    // everytime you shoot, you lose one in your ammo
     rainbowCount -= 1;
-
-    // for (var i = 0; i < obstaclesGroup.length; i++) {
-    //   var obstacles = obstaclesGroup[i];
-    //   if (pooGroup.overlap(obstacles)) {
-    //     obstacles.remove();
-    //   }
-    // }
   }
 }
 
-//the first parameter will be the sprite (individual or from a group) 
-//calling the function
-//the second parameter will be the sprite (individual or from a group)
-//against which the overlap, collide, bounce, or displace is checked
+// score for ice creams collected
+// the first parameter will be the sprite (individual or from a group) calling the function
+// the second parameter will be the sprite (individual or from a group)
+// against which the overlap, collide, bounce, or displace is checked
 function collect(collector, collected) {
   score += 1;
   collected.remove();
@@ -119,32 +162,72 @@ function collect(collector, collected) {
 
 // function that sets an animation of a growing beanstalk
 function obstacleGrow(collector, collected) {
-  // first remove collider object
+  // first remove the obstacle object
   collected.remove();
+  // collector is the poop
   collector.remove();
-  
+
   // set a new animation sprite 
-  // create the bean stalk animation obeject in the position of the item removed
-  // as the bean sprite has a different centre position to the animation, this must be adjusted
-  beanStalk = createSprite(collected.position.x, collected.position.y - ((beanLastSprite.height - obstaclesSprite.height) * 0.2 / 2));
-  beanStalk.addAnimation("beanStalk", "images/bean_1.png", "images/bean_5.png");
+  // create the bean stalk animation object in the position of the item removed
+  // as the bean sprite has a different centre position to the animation this must be adjusted
+  // beanLastSprite object is just used to calculate the height of the animation sprite
+  beanStalk = createSprite(collected.position.x,
+    collected.position.y - ((beanLastSprite.height - obstaclesSprite.height) * 0.2 / 2));
+
+  beanStalk.addAnimation("beanStalker", beanAnim);
+
+  // puts beam stalk on the lowest drawing hierarchy
+  //beanStalk.depth = 0;
   beanStalk.scale = 0.2
-  beanStalk.animation.looping = false;
+  if (beanStalk.animation.playing === true) {
+    beanStalk.animation.looping = false;
+  }
+
   // slowdown animation
   beanStalk.animation.frameDelay = 6;
-  unicorn.collide(beanStalk);
+
+  // add the beanStalk sprite to a group so we can apply collisions
+
+
+  stalkScore++;
+  beanStalkGroup.add(beanStalk);
+  console.log(stalkScore);
+}
+
+function scoreBoard() {
+  // drawing the board background
+  textFont(instructionsFont);
+  strokeWeight(3);
+  stroke(90);
+  fill(230);
+  rect(20, 20, 145, 75);
+
+  // drawing the text
+  fill(90);
+  noStroke();
+  textSize(20);
+  text("Ice Cream", 35, 50);
+  text("Magic Poop", 35, 80);
+  text(score, 140, 50);
+  text(rainbowCount, 140, 80);
+}
+
+function mousePressed() {
+  //newGame();
+  gameStarts = true;
 
 }
 
-// socreboard position
-function scoreBoard() {
-  rect(50, 65, 200, 45);
-  fill(255);
-  //scoreBoardCollider = createSprite(55, 70, 55, 70);
-  textSize(15);
-  fill(0);
-  text("Collect 5 ice Creams to give you one Rainbow Poo", 60, 40);
-  text("Press the mouse to shoot poo at obstacles", 60, 60);
-  text("number of iceCreams " + score, 70, 80);
-  text("number of rainbowPoo " + rainbowCount, 70, 100);
+function instructionScreen() {
+  background(255, 255, 150);
+  textSize(40);
+  fill(150, 100, 200);
+  textFont(instructionsFont);
+  text("Collect 3 Ice Creams to get one Magic Poop", 250, height / 2 - 20);
+  fill(250, 100, 200);
+  text("Press x to poop and make bean stalks grow", 242, height / 2 + 20);
+  fill(50, 100, 220);
+  textFont(startFont);
+  textSize(35);
+  text("Click mouse to START", 430, height / 2 + 120);
 }
