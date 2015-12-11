@@ -129,7 +129,7 @@ function draw() {
       pooGroup.overlap(obstacles, obstacleGrow);
     }
 
-    if (stalkScore == 3) {
+    if (stalkScore == 3 && beanStalk.animation.getFrame() == beanStalk.animation.getLastFrame()) {
       background(255, 255, 150);
       mySprites.remove();
       textFont(instructionsFont);
@@ -196,7 +196,6 @@ function obstacleGrow(collector, collected) {
   beanStalk.animation.frameDelay = 6;
 
   // add the beanStalk sprite to a group so we can apply collisions
-
 
   stalkScore++;
   beanStalkGroup.add(beanStalk);
