@@ -1,3 +1,5 @@
+//code by Phoenix Perry
+// p.perry@gold.ac.uk dept. of computing
 
 PImage img1;
 PImage img2;
@@ -72,4 +74,3 @@ void draw(){}
      background(0); 
     make(); 
   }
-
