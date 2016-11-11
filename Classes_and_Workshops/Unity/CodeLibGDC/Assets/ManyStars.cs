@@ -16,18 +16,18 @@ public class ManyStars : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        guiText.text = "Stars Collected: " + numCollected + "    Time Remaining " + (10.0f - Time.time);
+        GetComponent<GUIText>().text = "Stars Collected: " + numCollected + "    Time Remaining " + (10.0f - Time.time);
 
         if (Time.time > 10)
         {
 
             if (numCollected > 10)
             {
-                guiText.text = "Game Over you win!";
+                GetComponent<GUIText>().text = "Game Over you win!";
             }
             else
             {
-                guiText.text = "Game Over you lose!"; 
+                GetComponent<GUIText>().text = "Game Over you lose!"; 
             }
         }
         
