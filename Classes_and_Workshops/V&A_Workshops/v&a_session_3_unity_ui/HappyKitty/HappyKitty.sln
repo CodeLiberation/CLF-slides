@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyKitty.CSharp", "HappyKitty.CSharp.csproj", "{65E7E9D8-04E1-7305-D613-F1B85324EE3A}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{877A5976-5AC6-AE4E-365D-7E97532DD656}") = "HappyKitty", "Assembly-CSharp.csproj", "{EAB6D231-CFA0-E4C0-0B20-2A4073064EDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{65E7E9D8-04E1-7305-D613-F1B85324EE3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65E7E9D8-04E1-7305-D613-F1B85324EE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65E7E9D8-04E1-7305-D613-F1B85324EE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65E7E9D8-04E1-7305-D613-F1B85324EE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAB6D231-CFA0-E4C0-0B20-2A4073064EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB6D231-CFA0-E4C0-0B20-2A4073064EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB6D231-CFA0-E4C0-0B20-2A4073064EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB6D231-CFA0-E4C0-0B20-2A4073064EDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

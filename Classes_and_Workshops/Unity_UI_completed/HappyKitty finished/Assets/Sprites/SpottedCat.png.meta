@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: 3e69b35fd02a140498f13e743728cf51
+timeCreated: 1438135022
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SpottedCat_0
+    21300002: SpottedCat_1
+    21300004: SpottedCat_2
+    21300006: SpottedCat_3
+    21300008: SpottedCat_4
+    21300010: SpottedCat_5
+    21300012: SpottedCat_6
+    21300014: SpottedCat_7
+    21300016: SpottedCat_8
+    21300018: SpottedCat_9
+    21300020: SpottedCat_10
+    21300022: SpottedCat_11
+    21300024: SpottedCat_12
+    21300026: SpottedCat_13
+    21300028: SpottedCat_14
+    21300030: SpottedCat_15
+    21300032: SpottedCat_16
+    21300034: SpottedCat_17
+    21300036: SpottedCat_18
+    21300038: SpottedCat_19
+    21300040: SpottedCat_20
+    21300042: SpottedCat_21
+    21300044: SpottedCat_22
+    21300046: SpottedCat_23
+    21300048: SpottedCat_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 20
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SpottedCat_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 422
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 422
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 422
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_3
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 422
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_4
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 422
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_5
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 332
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_6
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 332
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_7
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 332
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_8
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 332
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_9
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 332
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_10
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 242
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_11
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 242
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_12
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 242
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_13
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 242
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_14
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 242
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 152
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_16
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 152
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_17
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 152
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_18
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 152
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_19
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 152
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 62
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_21
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 62
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_22
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 62
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_23
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 62
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpottedCat_24
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 62
+        width: 86
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
