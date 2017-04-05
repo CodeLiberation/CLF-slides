@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Magic Interactivity on the Web with p5.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/codelib.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/atom-one-light.css">
+
+	<!--Add support for earlier versions of Internet Explorer -->
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+	<!-- Printing and PDF exports -->
+	<script>
+	var link = document.createElement( 'link' );
+	link.rel = 'stylesheet';
+	link.type = 'text/css';
+	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+
+
+<body>
+	<div class="reveal">
+		<!-- SLIDES / here we can create the slides -->
+		<div class="slides">
+			<section data-markdown>
+				<script type="text/template">
+					![image](img/clf_logo_small.png "Code Liberation Logo")
+
+					## Hello from
+					# Code Liberation
+
+					#### [codeliberation.org](http://codeliberation.org)
+					#### [@codeliberation](https://twitter.com/CodeLiberation)
+
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					# Today
+
+					* Code Liberation
+					* p5.js
+					* Programming?
+
+					* Part 1:
+					* The Canvas - Shapes - Colors
+					* Part 2:
+					* Variables - Loops - Interactivity
+					* Part 3:
+					* Ball Catch Game
+					* Play
+
+					* Want to learn more?
+				</script>
+			</section>
+
+	<!-- ABOUT US  & Introduction -->
+			<section>
+				<section data-markdown data-background-iframe="http://codeliberation.org">
+					<script type="text/template">
+						# About us
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						# Saskia Freeke
+					</script>
+				</section>
+
+		<!-- About p5.js & Processing -->
+			</section>
+			<section>
+				<section data-markdown data-background-iframe="http://p5js.org/">
+					# p5.js
+
+					Javascript
+				</section>
+				<section>
+					# examples
+
+
+				</section>
+
+				<section data-markdown data-background-iframe="http://processing.org/">
+					# Processing
+				</section>
+			</section>
+
+
+<!-- Computational Thinking -->
+
+			<section>
+			<section data-markdown>
+				<script type="text/template">
+					# Computational Thinking
+
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					# Rules
+
+				</script>
+			</section>
+		</section>
+
+		<!-- Coding Part 1 -->
+		<section>
+
+			<section data-markdown>
+				<script type="text/template">
+					# Setup & Draw
+					<pre><code data-trim>
+						function setup() {
+
+						}
+
+						function draw() {
+
+						}
+					</code></pre>
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					# The Canvas
+					<pre><code data-trim>
+						function setup() {
+							createCanvas(640, 480);
+						}
+
+						function draw() {
+
+						}
+					</code></pre>
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					# Shape
+					<pre><code data-trim>
+						function setup() {
+							createCanvas(640, 480);
+						}
+
+						function draw() {
+							ellipse(100,100,20,20);
+
+						}
+
+
+					</code></pre>
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					# Coordination System
+
+					ellipse(x position,y position , width, height);
+					<pre><code data-trim>
+						function setup() {
+							createCanvas(640, 480);
+						}
+
+						function draw() {
+							ellipse(100,100,20,20);
+							ellipse(50,200,10,10);
+						}
+
+
+					</code></pre>
+				</script>
+			</section>
+
+
+</section>
+
+
+<!-- Coding Part 2 -->
+<section>
+		<section data-markdown>
+			<script type="text/template">
+
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+
+			</script>
+		</section>
+
+</section>
+
+<!-- Coding Part 3 / make a game -->
+<section>
+		<section data-markdown>
+			<script type="text/template">
+
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+
+			</script>
+		</section>
+
+</section>
+
+
+		</div>
+	</div>
+
+
+	<!-- Javascript reference -->
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+		controls: true,
+
+		// Factor of the display size that should remain empty around the content
+		margin: 0.2,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+	</script>
+</body>
+</html>
