@@ -1,0 +1,920 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Magic Interactivity on the Web with p5.js</title>
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/codelib.css">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/atom-one-light.css">
+
+<!--Add support for earlier versions of Internet Explorer -->
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+</head>
+
+
+<body>
+<div class="reveal">
+<!-- SLIDES / here we can create the slides -->
+<div class="slides">
+<section data-markdown>
+<script type="text/template">
+![image](img/clf_logo_small.png "Code Liberation Logo")
+
+## Hello from
+# Code Liberation
+
+##### [codeliberation.org](http://codeliberation.org)
+##### [@codeliberation](https://twitter.com/CodeLiberation)
+
+
+
+</script>
+</section>
+
+<section>
+<section data-markdown>
+<script type="text/template">
+# Today
+
+* Code Liberation
+* p5.js
+* Programming?
+
+* Part 1:
+* The Canvas - Shapes - Colours
+* Part 2:
+* Variables - Loops - Interactivity
+
+
+* Want to learn more?
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Questions?
+
+Just ask any question if you don't understand  
+or want to know more about something.
+
+Just ask/say:  
+I don't understand this, could you maybe give a example?  
+Could you explain this in another way?  
+..
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Slides
+
+tbc...
+
+</script>
+</section>
+
+</section>
+
+<!-- ABOUT US  & Introduction -->
+<section>
+<section data-markdown data-background-iframe="http://codeliberation.org">
+<script type="text/template">
+# About us
+</script>
+</section>
+<section data-markdown>
+<script type="text/template">
+## Tara Collingwoode-Williams
+## Saskia Freeke
+## Lula Mebrahtu
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# and you?
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# What games do you like?
+![image](img/video-games.gif "Dog playing")
+
+</script>
+</section>
+
+</section>
+
+<!-- About p5.js & Processing -->
+
+<section>
+<section data-markdown>
+# [p5.js](http://p5js.org/)
+
+Javascript
+</section>
+
+<section data-markdown data-background-iframe="http://processing.org/">
+# Processing
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Examples
+![image](img/PandaPlay.gif "Panda Play")
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Open Processing
+
+[https://www.openprocessing.org](https://www.openprocessing.org)
+
+</script>
+</section>
+</section>
+
+<!-- Coding Part 1 -->
+
+<section>
+<section data-markdown>
+<script type="text/template">
+
+# Let's Start
+## Coding Part 1
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Comment anyone?
+## Comments are our friends
+
+![image](img/Comment.jpg "Comment comic")
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+
+# Setup & Draw
+
+<pre><code data-trim>
+//function setup is run once and is used to setup the initial environment properties
+function setup() {}
+//function draw is called every frame and continuously executes the line in the code block
+function draw() {}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# functions?
+A block of code that perform tasks
+![image](img/graph1.png "Function graph")
+
+
+[p5.js | Reference: setup](https://p5js.org/reference/#/p5/setup)  
+[p5.js | Reference: draw](https://p5js.org/reference/#/p5/draw)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# The Canvas
+![image](img/canvas.jpg "Canvas")
+<pre><code data-trim>
+function setup() {
+//this creates the 'canvas' to draw upon. In setup this is just drawn once.
+	createCanvas(640, 480);
+}
+
+function draw() {
+
+}
+</code></pre>
+
+[p5.js | Reference: createCanvas()](https://p5js.org/reference/#/p5/createCanvas)
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Shapes
+<pre><code data-trim>
+function setup() {
+	createCanvas(640, 480);
+}
+
+function draw() {
+//ellipse draws a circle (width, height, size, radius)
+	ellipse(100,100,20,20);
+}
+
+</code></pre>
+
+# Try a Rect
+<pre><code data-trim>
+function setup() {
+	createCanvas(640, 480);
+}
+
+function draw() {
+//rect draws as a square/rectangle (positionX, positionY, width, height)
+	rect(-,-,-,-);
+}
+
+</code></pre>
+
+[p5.js | Reference: shape](https://p5js.org/reference/#group-Shape)
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Coordination System
+
+## All shapes are measured by pixel distance from the Origin [0,0] which is the top left of the screen
+
+<pre><code data-trim>
+ellipse(x position, y position, width, height);
+function setup() {
+	createCanvas(640, 480);
+}
+
+function draw() {
+	ellipse(100,100,20,20);
+	ellipse(50,200,10,10);
+}
+</code></pre>
+
+[p5.js | Reference: Coordinates](https://p5js.org/examples/structure-coordinates.html)
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Colours
+## fill(Red,Green,Blue,Alpha)
+
+<pre><code data-trim>
+function setup() {
+	createCanvas(640, 480);
+	background(40);
+}
+
+function draw() {
+	fill(100);
+	ellipse(100,100,20,20);
+
+	fill(200,0,150);
+	stroke(255,0,0);
+	ellipse(50,200,10,10);
+}
+</code></pre>
+
+
+[p5.js | Reference: Color](https://p5js.org/reference/#group-Color)  
+[p5.js | Reference: Background](https://p5js.org/reference/#/p5/background)  
+[p5.js | Reference: Fill](https://p5js.org/reference/#/p5/fill)  
+[p5.js | Reference: Color](https://p5js.org/reference/#/p5/stroke)  
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Still with me?
+
+![image](img/CutePic.gif "Dog playing")
+</script>
+</section>
+
+<section data-markdown>
+# let's play a bit
+
+## Create an Object/Animal(?)
+
+</section>
+
+</section>
+
+<section>
+<section data-markdown>
+<script type="text/template">
+# BREAK!
+</script>
+</section>
+</section>
+
+<!-- Coding Part 2 -->
+<section>
+<section data-markdown>
+<script type="text/template">
+## Coding Part 2
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Variables
+You can think of a variable as a box.
+You can always open the box and change what’s inside
+![image](img/giphy.gif "box gif")
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Variables example
+
+## let's put 7 ellipses on one row
+
+<pre><code data-trim>
+function setup() {
+	createCanvas(640, 480);
+	background(255);
+}
+
+function draw() {
+	fill(200,0,200);
+	ellipse(100,100,20,20);
+	ellipse(50,200,10,10);
+	..
+}
+</code></pre>
+
+[p5.js | Reference: Variables](https://p5js.org/examples/data-variables.html)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# How can we simplify this with Variables?
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Variables
+
+<pre><code data-trim>
+
+var a = 20;
+var b = 32.1;
+var xPos = 20;
+var cat = 115;
+
+function setup() {
+	createCanvas(640, 480);
+	background(a);
+}
+
+function draw() {
+	fill(200,0,200);
+	ellipse(xPos,100,20,20);
+	ellipse(cat,200,b,a);
+	..
+}
+</code></pre>
+
+[p5.js | Reference: Variables](https://p5js.org/examples/data-variables.html)
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Variables example
+
+Using Map- lets create a colour slider.
+
+<pre><code data-trim>
+
+var r = 0;
+var b = 255;
+
+function setup(){ 
+  createCanvas(600,600);
+	//local origin is from the center
+  rectMode(CENTER);
+}
+
+
+function draw(){
+	//map(Value, StartCurrentRange, StopCurrentRange, StartcTargetRange, StopTargetRange)
+  r = map(mouseY, 0, 600, 0, 255);
+  b = map(mouseY, 0, 600, 255, 0);
+  
+  background(r,50,b);
+
+  fill(255,0,0);
+  stroke(0);
+  rect(width/2, mouseY,mouseY/2,mouseY/2);
+}  
+
+</code></pre>
+
+[p5.js | Reference: Map](https://p5js.org/reference/#/p5/map)
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Variables example
+
+A bit more Complex...
+
+<pre><code data-trim>
+
+var dot = {
+  x: 100,
+  y: 50
+}
+
+var col = {
+   r: 255,
+   g: 0,
+   b: 0,
+   a: 0
+}
+
+var size = {
+	sizeX: 100,
+	sizeY: 100
+}
+
+
+function setup() {
+   createCanvas(600, 600);
+  //background will only be drawn once
+   background(0);
+
+}
+
+function draw() {
+  //randomize values
+  dot.x = random(10, width);
+  dot.y = random(10, height);
+
+  size.sizeX = random(0, 100);
+  size.sizeY = random(0, 100); 
+   
+  col.r = random(100, 255);
+  col.g = random(100,200);
+  col.b = random(50, 150);
+  col.a = random(50, 255);
+  
+  //draw circles
+  noStroke();
+  fill(col.r,col.g,col.b, col.a);
+  ellipse(dot.x,dot.y, size.sizeX,size.sizeY);
+
+}
+
+</code></pre>
+
+[p5.js | Reference: Map](https://p5js.org/reference/#/p5/map)
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Quick Quiz
+
+Why won't these programs run?
+
+<pre><code data-trim>
+
+var positionx;
+var positiony;
+
+function setup() {
+   createCanvas(600, 600);
+  //background will only be drawn once
+   background(0);
+
+}
+
+function draw() {
+  	positionx = 10;
+    positiony = 10;
+  	fill(0,255);
+	ellipse(positionx,positiony,10,10);
+}  
+
+</code></pre>
+
+<pre><code data-trim>
+var position = {
+  var  x: 100,
+  var y: 50
+}
+
+function setup() {
+   createCanvas(600, 600);
+  //background will only be drawn once
+   background(0);
+
+}
+
+function draw() {
+rect(position.x,position.y, 50,50);
+  fill(255);
+} 
+
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# for loop
+
+<pre><code data-trim>
+
+function setup() {
+	createCanvas(640, 480);
+	background(a);
+}
+
+function draw() {
+	fill(200,0,200);
+
+	for (var i = 0; i > 10; i++){
+		ellipse(100,100,20,20);
+	}
+
+}
+</code></pre>
+
+[p5.js | Reference: Loop](https://p5js.org/examples/structure-loop.html)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# More on For loops
+
+Loops run instructions inside the code block until program ends or exit clause is met
+
+<pre><code data-trim>
+ for (init; test; update){  
+		statement  
+}  
+
+</code></pre>
+
+<pre><code data-trim>
+
+function draw(){
+	for (var i = 0; i > 10; i++){
+		ellipse(100+(i*20),100,20,20);
+	}
+
+	for (var i = 0; i > 200; i+= 20){
+		ellipse(100+i,100,20,20);
+	}
+
+}
+
+</code></pre>
+
+Try recreate one of the previous examples using a loop!
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# relational Operators
+
+<pre><code data-trim>
+> Greater than  
+< Less than  
+>= Greater than or equal to  
+<= Less than or equal to  
+== Equal to  
+!= Not Equal to  
+
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# if statement (Conditionals)
+
+Conditionals are like questions. Every time the function runs the questions are asked until answered.
+ 
+<pre><code data-trim>
+
+function draw() {
+	fill(200,0,200);
+
+	var i = 20;
+
+//question stated
+	if (i >= 10){
+		ellipse(100,100,30,30);
+	}
+
+}
+</code></pre>
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# There's still more!
+
+![image](img/moreToDo.gif "To-Do List")
+
+</script>
+</section>
+
+</section>
+
+
+<!-- Interactivity -->
+
+<section>
+<section data-markdown>
+<script type="text/template">
+
+# What kind of interactivity?
+
+
+[p5.js | Reference: Events](https://p5js.org/reference/#group-Events)
+
+</script>
+</section>
+<section data-markdown>
+<script type="text/template">
+# Mouse interactivity
+
+<pre><code data-trim>
+
+function draw() {
+	fill(200,0,200);
+	ellipse(mouseX,100,30,30);
+	rect(100,mouseY,30,30);
+}
+</code></pre>
+
+[p5.js | Reference: MouseX](https://p5js.org/reference/#/p5/mouseX)
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Mouse Pressed
+
+<pre><code data-trim>
+
+var sz = 20;
+
+function setup(){
+	createCanvas(800,600);
+}
+
+function draw() {
+	background(255);
+	fill(200,0,200);
+	ellipse(mouseX,100,sz,sz);
+	rect(100,mouseY,30,30);
+}
+
+function mousePressed(){
+
+	sz = 100;
+
+}
+
+</code></pre>
+
+[p5.js | Reference: MousePressed](https://p5js.org/reference/#/p5/mousePressed)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Key Pressed
+
+<pre><code data-trim>
+
+var sz = 20;
+var coltint = 10; 
+var r;
+var g;
+var b;
+
+function setup(){
+	createCanvas(800,600);
+	background(255);
+}
+
+function draw() {
+  r = 255;
+  g = 100;
+  b = 50;
+	noStroke();
+	ellipse(mouseX,mouseY,sz,sz);
+    fill(r,g,b);
+}
+
+function keyPressed() {
+	//resets background to white
+	background(255);
+}
+
+</code></pre>
+
+[p5.js | Reference: KeyPressed](https://p5js.org/reference/#/p5/keyPressed)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Still with me? 
+## Questions?
+![image](img/Questions.gif "Questions?")
+
+</script>
+</section>
+
+
+</section>
+
+<!-- /Interaction -->
+
+<section data-markdown>
+<script type="text/template">
+# Add an image
+
+<pre><code data-trim>
+var img;
+  
+function setup() {
+   createCanvas(600, 600);
+   background(0);
+   img = createImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sert_-_happy_smile.svg/2000px-Sert_-_happy_smile.svg.png");
+}
+
+function draw() {
+	//image(image, posX, posY, imgSizeX, imgSizeY)
+  image(img, 200, 200, img.width/10, img.height/10);
+
+ }
+
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Tickle It
+
+<pre><code data-trim>
+
+var img, x, y, n, t, imgSize;
+  
+function setup() {
+   createCanvas(600, 600);
+   background(0);
+   //load image form the internet
+   img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sert_-_happy_smile.svg/2000px-Sert_-_happy_smile.svg.png");
+   
+   x = 200;
+   y = 200;
+  
+}
+
+function draw() {
+    //set image size to be a tenth of original
+   n = img.width/10;
+   t = img.height/10;
+   
+   //create background
+  fill(204, 120, 0);
+  rect(0,0,width,height);
+  
+  
+  //fill in image parameters
+  image(img, x, y, n, t);
+
+  //create collision box
+  if( mouseX >= x && mouseX <= x + n && mouseY >= y  && mouseY <= y + t){
+    //shake image! 
+    x += random(-5, 5);
+    y += random(-5, 5);
+    //change image
+    img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Emojione_1F602.svg/2000px-Emojione_1F602.svg.png");
+    
+  }
+    else{
+      //if not collided return the image to the old one
+      img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sert_-_happy_smile.svg/2000px-Sert_-_happy_smile.svg.png");
+     
+  }
+    
+}
+
+</code></pre>
+
+</script>
+</section>
+
+
+<!-- Learn more -->
+<section>
+<section data-markdown>
+<script type="text/template">
+
+Try something different!
+
+# Learn more?
+
+## [p5.js website](https://p5js.org/)
+## [Coding Train](https://www.youtube.com/user/shiffman)
+## [Kadenze Course](https://www.kadenze.com/courses/introduction-to-programming-for-the-visual-arts-with-p5-js/info)		
+
+</script>
+</section>
+</section>
+
+<section>
+<section data-markdown>
+<script type="text/template">
+
+# 	THANK YOU
+
+# Questions?
+
+</script>
+</section>
+
+</section>
+
+
+</div>
+</div>
+
+
+<!-- Javascript reference -->
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	history: true,
+	controls: true,
+
+	// Factor of the display size that should remain empty around the content
+	margin: 0.2,
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+	{ src: 'plugin/markdown/marked.js' },
+	{ src: 'plugin/markdown/markdown.js' },
+	{ src: 'plugin/notes/notes.js', async: true },
+	{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+	]
+	});
+	</script>
+	</body>
+	</html>
