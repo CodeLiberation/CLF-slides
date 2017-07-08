@@ -54,13 +54,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
 * Code Liberation
 * p5.js
-* Programming?
 
 * Part 1:
 * The Canvas - Shapes - Colours
+
 * Part 2:
 * Variables - Loops - Interactivity
-
 
 * Want to learn more?
 
@@ -72,22 +71,13 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 <script type="text/template">
 # Questions?
 
-Just ask any question if you don't understand  
+Just ask any question if you don't understand
 or want to know more about something.
 
-Just ask/say:  
-I don't understand this, could you maybe give a example?  
-Could you explain this in another way?  
+Just ask/say:
+I don't understand this, could you maybe give a example?
+Could you explain this in another way?
 ..
-
-</script>
-</section>
-
-<section data-markdown>
-<script type="text/template">
-# Slides
-
-tbc...
 
 </script>
 </section>
@@ -197,7 +187,7 @@ A block of code that perform tasks
 ![image](img/graph1.png "Function graph")
 
 
-[p5.js | Reference: setup](https://p5js.org/reference/#/p5/setup)  
+[p5.js | Reference: setup](https://p5js.org/reference/#/p5/setup)
 [p5.js | Reference: draw](https://p5js.org/reference/#/p5/draw)
 </script>
 </section>
@@ -301,10 +291,10 @@ function draw() {
 </code></pre>
 
 
-[p5.js | Reference: Color](https://p5js.org/reference/#group-Color)  
-[p5.js | Reference: Background](https://p5js.org/reference/#/p5/background)  
-[p5.js | Reference: Fill](https://p5js.org/reference/#/p5/fill)  
-[p5.js | Reference: Color](https://p5js.org/reference/#/p5/stroke)  
+[p5.js | Reference: Color](https://p5js.org/reference/#group-Color)
+[p5.js | Reference: Background](https://p5js.org/reference/#/p5/background)
+[p5.js | Reference: Fill](https://p5js.org/reference/#/p5/fill)
+[p5.js | Reference: Color](https://p5js.org/reference/#/p5/stroke)
 
 </script>
 </section>
@@ -422,7 +412,7 @@ Using Map- lets create a colour slider.
 var r = 0;
 var b = 255;
 
-function setup(){ 
+function setup(){
   createCanvas(600,600);
 	//local origin is from the center
   rectMode(CENTER);
@@ -433,13 +423,13 @@ function draw(){
 	//map(Value, StartCurrentRange, StopCurrentRange, StartcTargetRange, StopTargetRange)
   r = map(mouseY, 0, 600, 0, 255);
   b = map(mouseY, 0, 600, 255, 0);
-  
+
   background(r,50,b);
 
   fill(255,0,0);
   stroke(0);
   rect(width/2, mouseY,mouseY/2,mouseY/2);
-}  
+}
 
 </code></pre>
 
@@ -487,13 +477,13 @@ function draw() {
   dot.y = random(10, height);
 
   size.sizeX = random(0, 100);
-  size.sizeY = random(0, 100); 
-   
+  size.sizeY = random(0, 100);
+
   col.r = random(100, 255);
   col.g = random(100,200);
   col.b = random(50, 150);
   col.a = random(50, 255);
-  
+
   //draw circles
   noStroke();
   fill(col.r,col.g,col.b, col.a);
@@ -531,9 +521,17 @@ function draw() {
     positiony = 10;
   	fill(0,255);
 	ellipse(positionx,positiony,10,10);
-}  
+}
 
 </code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Quick Quiz
+
+Why won't these programs run?
 
 <pre><code data-trim>
 var position = {
@@ -551,12 +549,14 @@ function setup() {
 function draw() {
 rect(position.x,position.y, 50,50);
   fill(255);
-} 
+}
 
 </code></pre>
 </script>
 </section>
+</section>
 
+<section>
 <section data-markdown>
 <script type="text/template">
 # for loop
@@ -571,7 +571,7 @@ function setup() {
 function draw() {
 	fill(200,0,200);
 
-	for (var i = 0; i > 10; i++){
+	for (var i = 0; i < 10; i++){
 		ellipse(100,100,20,20);
 	}
 
@@ -589,20 +589,20 @@ function draw() {
 Loops run instructions inside the code block until program ends or exit clause is met
 
 <pre><code data-trim>
- for (init; test; update){  
-		statement  
-}  
+ for (init; test; update){
+		statement
+}
 
 </code></pre>
 
 <pre><code data-trim>
 
 function draw(){
-	for (var i = 0; i > 10; i++){
+	for (var i = 0; i < 10; i++){
 		ellipse(100+(i*20),100,20,20);
 	}
 
-	for (var i = 0; i > 200; i+= 20){
+	for (var i = 0; i < 200; i+= 20){
 		ellipse(100+i,100,20,20);
 	}
 
@@ -620,12 +620,12 @@ Try recreate one of the previous examples using a loop!
 # relational Operators
 
 <pre><code data-trim>
-> Greater than  
-< Less than  
->= Greater than or equal to  
-<= Less than or equal to  
-== Equal to  
-!= Not Equal to  
+> Greater than
+< Less than
+>= Greater than or equal to
+<= Less than or equal to
+== Equal to
+!= Not Equal to
 
 </code></pre>
 </script>
@@ -636,7 +636,7 @@ Try recreate one of the previous examples using a loop!
 # if statement (Conditionals)
 
 Conditionals are like questions. Every time the function runs the questions are asked until answered.
- 
+
 <pre><code data-trim>
 
 function draw() {
@@ -737,7 +737,7 @@ function mousePressed(){
 <pre><code data-trim>
 
 var sz = 20;
-var coltint = 10; 
+var coltint = 10;
 var r;
 var g;
 var b;
@@ -769,7 +769,7 @@ function keyPressed() {
 
 <section data-markdown>
 <script type="text/template">
-# Still with me? 
+# Still with me?
 ## Questions?
 ![image](img/Questions.gif "Questions?")
 
@@ -780,14 +780,14 @@ function keyPressed() {
 </section>
 
 <!-- /Interaction -->
-
+<section>
 <section data-markdown>
 <script type="text/template">
 # Add an image
 
 <pre><code data-trim>
 var img;
-  
+
 function setup() {
    createCanvas(600, 600);
    background(0);
@@ -811,51 +811,52 @@ function draw() {
 <pre><code data-trim>
 
 var img, x, y, n, t, imgSize;
-  
+
 function setup() {
    createCanvas(600, 600);
    background(0);
    //load image form the internet
    img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sert_-_happy_smile.svg/2000px-Sert_-_happy_smile.svg.png");
-   
+
    x = 200;
    y = 200;
-  
+
 }
 
 function draw() {
     //set image size to be a tenth of original
    n = img.width/10;
    t = img.height/10;
-   
+
    //create background
   fill(204, 120, 0);
   rect(0,0,width,height);
-  
-  
+
+
   //fill in image parameters
   image(img, x, y, n, t);
 
   //create collision box
   if( mouseX >= x && mouseX <= x + n && mouseY >= y  && mouseY <= y + t){
-    //shake image! 
+    //shake image!
     x += random(-5, 5);
     y += random(-5, 5);
     //change image
     img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Emojione_1F602.svg/2000px-Emojione_1F602.svg.png");
-    
+
   }
     else{
       //if not collided return the image to the old one
       img = loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sert_-_happy_smile.svg/2000px-Sert_-_happy_smile.svg.png");
-     
+
   }
-    
+
 }
 
 </code></pre>
 
 </script>
+</section>
 </section>
 
 
@@ -870,7 +871,7 @@ Try something different!
 
 ## [p5.js website](https://p5js.org/)
 ## [Coding Train](https://www.youtube.com/user/shiffman)
-## [Kadenze Course](https://www.kadenze.com/courses/introduction-to-programming-for-the-visual-arts-with-p5-js/info)		
+## [Kadenze Course](https://www.kadenze.com/courses/introduction-to-programming-for-the-visual-arts-with-p5-js/info)
 
 </script>
 </section>
