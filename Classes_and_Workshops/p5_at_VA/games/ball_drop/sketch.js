@@ -1,3 +1,10 @@
+/*
+Ball Drop Game
+Author: Phoenix Perry
+Code Liberation
+Created: 22-07-17
+*/
+
 
 var gameState = "startScreen"; //this will change as we play the game
 var isTouching = false; //checks if circles are touching
