@@ -146,11 +146,14 @@ number = half(number)
 <script type="text/template">
 # Functions (back to programming again)
 
-Variables that are declared/used in functions are expelled into the void after the function is over (unless returned.)
+Variables that are declared in functions are expelled into the void after the function is over (unless returned.)
+
+tk: Check what they know about variables and scoping.
 
 These functions can have *side effects* though. For our games, this might be drawing things. For instance...
 
 <!-- tk: can I include code from file? -->
+
 <pre><code data-trim>
 function draw() {
 	draw_target(50, 50);
@@ -168,12 +171,88 @@ function draw_target(x, y) {
 	ellipse(x, y, 20);
 }
 </code></pre>
+<pre><code data-trim>
+
+</code></pre>
 </script>
 </section>
 
+<section data-markdown>
+<script type="text/template">
+# Functions
 
+This looks like...
+
+tk: image
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions
+
+Why use functions?
+* Breaks up larger blocks of code into smaller logical units
+* Allows reuse of code (imagine drawing 1000 targets without that function.)
+* Lets you debug (find errors) easier.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions (try it!)
+
+Try writing a function that draws a snowman at a certain position:
+* One larger circle for the body.
+* One circle for the head.
+* Two circular eyes.
+* A triangle for the nose.
+* A sideways ellipse for the mouth.
+
+<pre><code data-trim>
+function draw_snowman(x, y) {
+	// Draw a snowman where the center of it's head is at (x, y).
+}
+</pre></code>
+</script>
+tk: working example of this to put on the next slide.
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# I am Snow man!
+
+tk: image
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Break!
+
+tk: do you wanna build a snowman
+
+</script>
+</section>
 </section> <!-- End section "functions" -->
 
+<section> <!-- Begin section "objects" -->
+<section data-markdown>
+<script type="text/template">
+# Objects
+
+</script>
+</section>
+</section> <!-- End section "objects" -->
+
+<section> <!-- Begin section "Arrays" -->
+
+</section> <!-- End section "Arrays" -->
+
+<section> <!-- Begin section "targets" -->
+
+</section> <!-- End section "targets" -->
 
 <!-- Javascript reference -->
 <script src="lib/js/head.min.js"></script>
