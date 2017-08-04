@@ -238,8 +238,95 @@ tk: image
 <script type="text/template">
 # Objects
 
+Objects (in the software sense) are a collection of variables and functions. We'll come back to that definition later.
+
+Firstly, let's talk about people. What properties do they have, and what do they do?
 </script>
 </section>
+
+<section data-markdown>
+<script type="text/template">
+# Building A Better Person object
+
+People have a name and age. They can be drawn, and can greet people.
+
+One of you in your pairs is the person object.
+
+<pre><code data-trim>
+	function Person(name, age) {
+		this.name = name;
+		this.age = age;
+		this.draw = function(paper) {
+			// Draws the person on the piece of paper and returns it.
+		}
+		this.greet = function() {
+			// The person says "Hello I'm {name}, nice to meet you!"
+		}
+	}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Objects are people too.
+
+Programmers, try the following things:
+* Call the greet function on your partner (say "hi".)
+* Hand them a piece of paper to draw themselves on (stickfigures are okay.)
+* Call the greet function on your partner five times (after waiting for the response each time.)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Constructing your objects.
+
+Objects are defined by making a function called the function name (yes, confusing). Note the capital letter.
+
+Within the object, you can refer to attributes/methods of the object using "this".
+
+Once you've defined your object, you can create a new one using "new".
+
+<pre><code data-trim>
+	function Target(x, y) {
+		this.x = x; // x position
+		this.y = y; // y position
+		this.clicked = false; // whether or not the target has been clicked yet
+
+		this.draw = function() {
+			// Draw the target
+		}
+	}
+
+	// main program
+	target = new Target(100, 100);
+	target.draw();
+
+	target_2 = new target(300, 100);
+	target_2.draw();
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Let's try it
+
+Construct an object for our snowman, using the draw method as we wrote last time (don't forget to change it to use "this.x" and "this.y".)
+
+The snowman needs an x and a y position and a draw method.
+
+Once you've done that, make three snowmen and draw them all.
+
+<pre><code data-trim>
+	function Snowman(x, y) {
+		// Complete me.
+	}
+</code></pre>
+</script>
+</section>
+
 </section> <!-- End section "objects" -->
 
 <section> <!-- Begin section "Arrays" -->
@@ -333,6 +420,14 @@ For this, we use a for loop and the length of the array (targets.length):
 		targets[i].draw(); //targets[i] means "get me the item at the 'ith' position in the array."
 	}
 </code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Now try...
+
+Create an array of snowmen, and use a for loop to draw them all.
 </script>
 </section>
 
