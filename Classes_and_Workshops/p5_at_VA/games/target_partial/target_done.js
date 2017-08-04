@@ -28,8 +28,9 @@ function draw() {
     draw_targets(); // Draw the targets
     draw_score(); // Draw the score
 
-    // IMPLEMENT ME! Add a new target every so often.
-
+   if (random() < (1/60)) {
+       add_new_targets();
+   }
     tick += 1; // Each frame we'll increment this "tick" counter by one. We might be able to use this...
 }
 
@@ -108,6 +109,9 @@ function Target(x, y)
     this.clicked = false; // This is "false" if the target has not been clicked yet, true otherwise.
 
     this.draw = function() {
+        if (this.clicked) { return; } // Honestly I'm being a bit cheeky here because this isn't in the extension exercise.
+        // The above just hides the target if it's been clicked.
+        
         // Draws this target
         fill(255, 0, 0); // Red
         ellipse(this.x, this.y, 80);
