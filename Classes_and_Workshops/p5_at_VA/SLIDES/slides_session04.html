@@ -1,0 +1,708 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Programming concepts in p5.js</title>
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/codelib.css">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/atom-one-light.css">
+
+<!--Add support for earlier versions of Internet Explorer -->
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+</head>
+
+
+<body>
+<div class="reveal">
+<!-- SLIDES / here we can create the slides -->
+<div class="slides">
+<section data-markdown>
+<script type="text/template">
+![image](img/clf_logo_small.png "Code Liberation Logo")
+
+## Hello (again) from
+# Code Liberation
+
+##### [codeliberation.org](http://codeliberation.org)
+##### [@codeliberation](https://twitter.com/CodeLiberation)
+
+
+
+</script>
+</section>
+
+<section> <!-- Section begin: "today" --> 
+<section data-markdown>
+<script type="text/template">
+# Today
+
+* Functions - Reusable bits of code.
+
+* Objects - A grouping of values and functions.
+
+* Arrays - Lists of things.
+
+* Game concepts discussion.
+
+
+</script>
+</section>
+</section> <!-- Section end: "today" -->
+
+<section> <!-- Section begin: About us -->
+<section data-markdown>
+<script type="text/template">
+# Who are we?
+## Charlie Ann Page
+## tk: TAs
+</script>
+</section>
+
+<!-- Section end: About us -->
+
+</section>
+
+<section> <!-- Section begin: "functions" -->
+<section data-markdown>
+<script type="text/template">
+# Functions
+
+Remember the setup and draw functions?
+
+<pre><code data-trim>
+//function setup is run once and is used to setup the initial environment properties
+function setup() {}
+//function draw is called every frame and continuously executes the line in the code block
+function draw() {}
+</code></pre>
+</script>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions
+
+We can make our own functions, too.
+
+Functions in general are blocks of code that:
+* Are given some values to use (parameters)
+* Do something
+* Give some value back (returning)
+
+<pre><code data-trim>
+function function_name(parameter1, parameter2, parameter3) { 
+	// Code goes here
+	return something;
+}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions (real world edition)
+
+In pairs, one of you grab a piece of paper (you're the programmer.)
+
+The other one in your pair is a function:
+* You take a parameter (a piece of paper.)
+* You tear that piece of paper in half.
+* You give one half back (put the other half aside.)
+
+Carry out that function in your pair now.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions (real world edition)
+
+Do that function again with your new piece of paper. What do you get?
+
+This is a bit like...
+
+<pre><code data-trim>
+function half(number) { 
+	return number / 2;
+}
+
+// Your main program...
+number = 16
+number = half(number)
+number = half(number)
+// number is now 4
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions (back to programming again)
+
+Variables that are declared in functions are expelled into the void after the function is over (unless returned.)
+
+These functions can have *side effects* though. For our games, this might be drawing things. For instance...
+
+<pre><code data-trim>
+function draw() {
+	draw_target(50, 50);
+	draw_target(450, 50);
+	draw_target(50, 450);
+	draw_target(450, 450);
+}
+
+function draw_target(x, y) {
+	fill(255, 0, 0); // Red
+	ellipse(x, y, 80);
+	fill(255, 255, 255); // White
+	ellipse(x, y, 50);
+	fill(255, 0, 0); // Red
+	ellipse(x, y, 20);
+}
+</code></pre>
+<pre><code data-trim>
+
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions
+
+## Why use functions?
+* Breaks up larger blocks of code into smaller logical units
+* Allows reuse of code (imagine drawing 1000 targets without that function.)
+* Lets you debug (find errors) easier.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Functions (try it!)
+
+Try writing a function that draws a snowman at a certain position:
+* One larger circle for the body.
+* One circle for the head.
+* Two circular eyes.
+* A triangle for the nose.
+* A sideways ellipse for the mouth.
+
+Draw three of them somewhere on the screen.
+
+<pre><code data-trim>
+function draw_snowman(x, y) {
+	// Draw a snowman where the center of it's head is at (x, y).
+}
+</pre></code>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# I am Snow man!
+
+<pre><code data-trim>
+function draw_snowman(x, y) {
+	// Draw a snowman where the center of it's head is at (x, y).
+    fill(255);
+    ellipse(x, y, 50)
+    ellipse(x, y+65,80)
+    ellipse(x-5, y-5, 5)
+    ellipse(x+5, y-5, 5)
+    triangle(x-5, y+3, x, y, x+5, y+3)
+    ellipse(x, y+10, 20, 10)
+}
+</pre></code>
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Break!
+</script>
+</section>
+</section> <!-- End section "functions" -->
+
+<section> <!-- Begin section "objects" -->
+<section data-markdown>
+<script type="text/template">
+# Objects
+
+Objects (in the software sense) are a collection of variables and functions (called "methods" in this context). We'll come back to that definition later.
+
+Firstly, let's talk about people. What properties do they have, and what do they do?
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Building A Better Person object
+
+People have a name and age. They can be drawn, and can greet people.
+
+One of you in your pairs is the person object.
+
+<pre><code data-trim>
+	function Person(name, age) {
+		this.name = name;
+		this.age = age;
+		this.draw = function(paper) {
+			// Draws the person on the piece of paper and returns it.
+		}
+		this.greet = function() {
+			// The person says "Hello I'm {name}, nice to meet you!"
+		}
+	}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Objects are people too.
+
+Programmers, try the following things:
+* Call the greet method on your partner (say "hi".)
+* Hand them a piece of paper to draw themselves on (stickfigures are okay.)
+* Call the greet method on your partner five times (after waiting for the response each time.)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Constructing your objects.
+
+Classes are defined by making a function called the function name (yes, confusing). Note the capital letter.
+
+Within that function, you can refer to attributes/methods of the object using "this".
+
+Once you've defined your class (template), you can create a new object of that type using the "new" keyword.
+
+<pre><code data-trim>
+	function Target(x, y) {
+		this.x = x; // x position
+		this.y = y; // y position
+		this.clicked = false; // whether or not the target has been clicked yet
+
+		this.draw = function() {
+			// Draw the target
+		}
+	}
+
+	// main program
+	target = new Target(100, 100);
+	target.draw();
+
+	target_2 = new target(300, 100);
+	target_2.draw();
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Let's try it
+
+Construct an object for our snowman, using the draw method as we wrote last time (don't forget to change it to use "this.x" and "this.y".)
+
+The snowman needs an x and a y position and a draw method.
+
+Once you've done that, make three snowmen and draw them all.
+
+<pre><code data-trim>
+	function Snowman(x, y) {
+		// Complete me.
+	}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Let's try it
+
+Your snowman should look something like this...
+
+<pre><code data-trim>
+function Snowman(x, y) {
+	// Draw a snowman where the center of it's head is at (x, y).
+    this.x = x;
+    this.y = y;
+    this.draw = function() {
+        fill(255);
+        ellipse(this.x, this.y, 50)
+        ellipse(this.x, this.y+65,80)
+        ellipse(this.x-5, this.y-5, 5)
+        ellipse(this.x+5, this.y-5, 5)
+        triangle(this.x-5, this.y+3, this.x, this.y, this.x+5, this.y+3)
+        ellipse(this.x, this.y+10, 20, 10)
+    }
+}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Let's try it
+
+Don't forget you have to create snowmen first.
+
+<pre><code data-trim>
+sm1 = new Snowman(100, 100);
+sm2 = new Snowman(300, 100);
+sm3 = new Snowman(500, 100);
+function setup() {
+  createCanvas(800,800);
+  background(255);
+  frameRate(60);
+}
+function draw() {
+    clear()
+    sm1.draw()
+    sm2.draw()
+    sm3.draw()
+}
+</code></data>
+</script>
+</section>
+
+<script type="text/template">
+# Break
+</script>
+</section>
+
+</section> <!-- End section "objects" -->
+
+<section> <!-- Begin section "Arrays" -->
+<section data-markdown>
+<script type="text/template">
+# Arrays
+
+Arrays are values that are lists of other values.
+
+We define them using square brackets, seperating each value with a comma.
+
+<pre><code data-trim>
+	// Declares an array called "numbers" which contains the numbers 1, 2, 3, and 4.
+	numbers = [1, 2, 3, 4];
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Arrays
+
+The values stored in an array can also be... arrays.
+
+<pre><code data-trim>
+	naughts_and_crosses_board = [
+		[0, 0, 0],
+		[0, 1, 0],
+		[0, 1, 2]
+	];
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Arrays (manipulating them)
+
+Arrays aren't just unchanging lists of things. We can add new things to them.
+
+Let's make a list of targets for our target game:
+<pre><code data-trim>
+	targets = []; // An empty array
+	targets.push(new Target(100, 100)); //Add a new target to the array!
+	targets.push(new Target(300, 100));
+	targets.push(new Target(500, 100));
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Arrays
+
+We can get the value out of a particular position in an array using square brackets.
+
+Arrays are *zero-indexed* - this means that the first item in the array is referred to as item 0. (You will make this mistake.)
+
+If the first item is 0, it means the last item is at position (length-1) too. In a length 5 array, trying to access position 5 will cause an error.
+<pre><code data-trim>
+	numbers = [5, 3, 2];
+	print(numbers[1]); // Prints "3" (the second value in the array.)
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Arrays (for loops)
+
+So we now have a list of targets and we want to draw all of them to the screen.
+
+For this, we use a for loop and the length of the array (targets.length):
+<pre><code data-trim>
+	for (var i = 0; i < targets.length; i++) // Loop through the array. Remember the first item is at index 0.
+	{
+		// For each target, draw that target.
+		targets[i].draw(); //targets[i] means "get me the item at the 'ith' position in the array."
+	}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Now try...
+
+Create an array of snowmen, and use a for loop to draw them all.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Now try...
+
+Drawing snowmen with a loop is as simple as:
+<pre><code data-trim>
+function draw_snowmen(sm) 
+{
+    for (var i = 0; i < sm.length; i++)
+    {
+        sm[i].draw()
+    }
+}
+</code></pre>
+
+Of course we need to create our array of snowmen first, which you can do like this:
+<pre><code data-trim>
+snowmen = []
+function setup() {
+  createCanvas(800,800);
+  background(255);
+  frameRate(60);
+  for (var i = 1; i < 7; i++) {
+    snowmen.push(new Snowman(i*100, 100))
+  }
+}
+</pre></code>
+</script>
+</section>
+
+<script type="text/template">
+# Break
+</script>
+</section>
+
+</section> <!-- End section "Arrays" -->
+
+<section> <!-- Begin section "targets" -->
+<section data-markdown>
+<script type="text/template">
+# Let's make a game!
+
+Open up target_partial.zip. You'll see what kind of looks like a game.
+
+Try running it. (Spoiler: nothing happens.)
+
+Try running the example target game to see what it may look like when complete!
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Drawing
+
+You'll note that there are comments throughout with an "IMPLEMENT ME!" comment on them. Let's try it.
+
+First thing's first: let's draw our targets... this should look familiar.
+
+<pre><code data-trim>
+    this.draw = function() {
+        // Draws this target
+        fill(255, 0, 0); // Red
+        ellipse(this.x, this.y, 80);
+        fill(255, 255, 255); // White
+        ellipse(this.x, this.y, 50);
+        fill(255, 0, 0); // Red
+        ellipse(this.x, this.y, 20);
+    }
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# New targets
+
+Right now, the setup() function is generating three targets, but I can only see one - why?
+
+It's because all three are in the same place. Let's try and randomise it a bit...
+
+Try using the random() function to place a target anywhere within the 800 by 800 canvas.
+<pre><code data-trim>
+	random(); // generates a random number between 0 and 1.
+	random() * 100; // generates a random number between 0 and 100.
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# New targets
+
+Now try refreshing repeatedly and see what you get!
+
+Your add_new_targets() should look something like this...
+<pre><code data-trim>
+function add_new_targets()
+{
+        // Adds a new target at a random location
+        x = random() * 800;
+        y = random() * 800;
+        target = new Target(x, y);
+        targets.push(target);
+}
+</code></pre>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# What's the point?
+
+We need to work on adding score to our game. Take a look at processClickAt() and Target's points function.
+
+I'm afraid this requires a bit of maths. To be in the inner ring you need to be 10 distance away, for the middle ring 25, and for the outer 40.
+
+<pre><code data-trim>
+	distance = this.distanceFrom(x,y);
+	if (distance < 10) { // We drew the inner ring as a circle with width 20 - which means the radius is 10.
+		return 10; // 10 points in the inner ring.
+	} // Use else ifs to do the other rings.
+	// Don't forget the else!
+</pre></code>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# What's the point?
+
+You should now be able to click for points, yay!
+
+<pre><code data-trim>
+    this.points = function(x, y) {
+        // Using the distance from a point (x, y) - calculate how many points that click is worth.
+        distance = this.distanceFrom(x,y);
+        if (distance < 10) { // We drew the inner ring as a circle with width 20 - which means the radius is 10.
+            return 10; // 10 points in the inner ring.
+        } else if (distance < 25) { 
+            return 5; // 5 points for the middle ring.
+        } else if (distance < 40) {
+            return 3; // 3 points for the outer ring.
+        } else {
+            return 0; // No points for anything else.
+        }
+    }
+</pre></code>
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Extension exercise/homework!
+
+In draw() there's a note to implement something which spawns new targets.
+
+You'll need to use add_new_targets() to do that, but if you just put it there, you'd spawn 60 a second!
+
+Think of a way to implement adding new targets that adds them less frequently.
+
+You may also want to work out a way to stop clicked targets from being displayed, or maybe delete them entirely!
+</script>
+</section>
+
+
+</section> <!-- End section "targets" -->
+
+<section> <!-- Section begins: wrapping up -->
+<section data-markdown>
+<script type="text/template">
+# Wrapping up.
+
+Today we have covered:
+* Functions
+* Objects
+* Arrays
+* Using those three things together for the target game.
+
+Any questions?
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# ...but we're not done yet.
+
+Now it's time to do some game design.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Thanks, all!
+
+See you soon.
+</script>
+</section>
+
+</section> <!-- end wrapping up -->
+
+<!-- Javascript reference -->
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	history: true,
+	controls: true,
+
+	// Factor of the display size that should remain empty around the content
+	margin: 0.2,
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+	{ src: 'plugin/markdown/marked.js' },
+	{ src: 'plugin/markdown/markdown.js' },
+	{ src: 'plugin/notes/notes.js', async: true },
+	{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+	]
+	});
+	</script>
+	</body>
+	</html>
