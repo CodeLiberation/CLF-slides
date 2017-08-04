@@ -1,5 +1,5 @@
 /*
-    target_full: example edition
+    target_partial: worksheet edition
     Written by Charlie Ann Page
     For the Code Liberation Foundation.
 */
@@ -8,22 +8,29 @@ targets = []
 player_points = 0;
 tick = 0;
 function setup() {
+  // Some boring configuration
   createCanvas(800,800);
   background(0);
   targets = [];
   player_points = 0;
   tick = 0;
-  frameRate(60);
+  frameRate(60); // 60fps
   textSize(20);
+
+  // Adds three targets to start
+  add_new_targets();
+  add_new_targets();
+  add_new_targets();
 }
 
 function draw() {
     clear(); // Clear the screen
     draw_targets(); // Draw the targets
     draw_score(); // Draw the score
-    add_new_targets(); // Add a new target (if it's the right time.)
-    clear_old_targets(); // Clear targets that were clicked or if there are too many.
-    tick += 1;
+
+    // IMPLEMENT ME! Add a new target every so often.
+
+    tick += 1; // Each frame we'll increment this "tick" counter by one. We might be able to use this...
 }
 
 function mousePressed() {
@@ -65,28 +72,11 @@ function draw_targets()
 
 function add_new_targets()
 {
-    if (tick % 60 == 0) {
-        // A new target spawns every second in a random location.
-        target = new Target(600 * random(), 600 * random());
+        // Adds a new target at a random location
+        x = random() * 800;
+        y = random() * 800;
+        target = new Target(x, y);
         targets.push(target);
-    }
-}
-
-function clear_old_targets()
-{
-    for (var i = targets.length - 1; i >= 0; i--)
-    {
-        // If a target has been clicked on, it's removed from the array.
-        if (targets[i].clicked)
-        {
-            targets.splice(i, 1);
-        }
-    }
-
-    // If there are more than 5 targets, delete the oldest until there is only 5.
-    if (targets.length > 5) {
-        targets.splice(0, targets.length-5)
-    }
 }
 
 function Target(x, y) 
@@ -103,38 +93,27 @@ function Target(x, y)
 
     this.points = function(x, y) {
         // Using the distance from a point (x, y) - calculate how many points that click is worth.
-        distance = this.distanceFrom(x, y);
-        for (var i = 0; i < this.layers.length; i++)
-        {
-            if (this.layers[i].size > distance)
-            {
-                return this.layers[i].points
-            }
+        distance = this.distanceFrom(x,y);
+        if (distance < 10) { // We drew the inner ring as a circle with width 20 - which means the radius is 10.
+            return 10; // 10 points in the inner ring.
+        } else if (distance < 25) { 
+            return 5; // 5 points for the middle ring.
+        } else if (distance < 40) {
+            return 3; // 3 points for the outer ring.
+        } else {
+            return 0; // No points for anything else.
         }
-        return 0;
     }
 
-    this.layers = [
-        // The layers of the bullseye. This time they're set, but they could be variable later.
-        new Layer(10, 10),
-        new Layer(18, 5),
-        new Layer(30, 3)
-    ]
-    this.clicked = false; // whether or not the target has been clicked.
+    this.clicked = false; // This is "false" if the target has not been clicked yet, true otherwise.
 
     this.draw = function() {
-        // Draws the target.
-        red = true;
-        for (var i = this.layers.length - 1; i >= 0; i--) // (Need to draw them in reverse to draw the big circles first.)
-        {
-            // Alternates drawing white and red filled circles.
-            if (red) { red = false; fill(255, 0, 0);} else { red = true; fill(255, 255, 255);}
-            ellipse(this.x, this.y, this.layers[i].size*2)
-        }
+        // Draws this target
+        fill(255, 0, 0); // Red
+        ellipse(this.x, this.y, 80);
+        fill(255, 255, 255); // White
+        ellipse(this.x, this.y, 50);
+        fill(255, 0, 0); // Red
+        ellipse(this.x, this.y, 20);
     }
-}
-
-function Layer(size, points) {
-    this.size = size; // The size of the layer.
-    this.points = points; // The number of points for the layer.
 }
