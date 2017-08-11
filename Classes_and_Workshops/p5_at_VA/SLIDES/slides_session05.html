@@ -1,0 +1,866 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>V&A Session 05</title>
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/codelib.css">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/atom-one-light.css">
+
+<!--Add support for earlier versions of Internet Explorer -->
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+</head>
+
+
+<body>
+<div class="reveal">
+
+<!-- SLIDES / here we can create the slides -->
+
+<div class="slides">
+<section data-markdown>
+<script type="text/template">
+![image](img_ga/clf_logo_small.png "Code Liberation Logo")
+
+# V&A Session 05
+
+</script>
+</section>
+
+
+<section> <!-- START section with multiple slides -->
+<section data-markdown>
+<script type="text/template">
+# Today
+
++ Saskia Freeke
++ Tara
++ Mimi
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Today
+
++ A few Atom tips
++ p5.js file structure
++ Homework last session
++ adding different shapes or enemies
++ Start & end screen
++ adding images
++ Snake Game
+
+</script>
+</section>
+
+
+
+
+</section>  <!-- END section with multiple slides -->
+
+
+<section> <!-- START section with multiple slides -->
+<section data-markdown>
+<script type="text/template">
+# Atom
+
++ open project folder
++ add or copy folders/files
+
++ download example files for this week
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Atom - install packages
+
+Let's make our lives a little bit easier!
+
+![image](img/relaxed.gif "Chill")
+
+
+</script>
+</section>
+
+
+
+<section data-markdown>
+<script type="text/template">
+## Atom - install packages
+
+1. Go to Welcome Guide
+2. Install a package
+> Browser Plus
+
+3. let's use it:
+> ctrl+shift+p(cmd+shift+p)
+> Browser Plus: Open
+
+4. Turn on live preview
+(we need to save the file )
+
+
+</script>
+</section>
+
+</section>  <!-- END section with multiple slides -->
+
+<section> <!-- START section with multiple slides -->
+<section data-markdown>
+<script type="text/template">
+## p5.js File structure
+
+Open this file in our week folder:
+> empty-example
+
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## p5.js File structure
+
+offline:
+<pre><code data-trim>
+	language="javascript" type="text/javascript" src="libraries/p5.js"
+</code></pre>
+
+online:
+<pre><code data-trim>
+language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"
+</code></pre>
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+## p5.js File structure
+
+project JavaScript files
+<pre><code data-trim>
+	src="sketch.js"
+</code></pre>
+
+<pre><code data-trim>
+	src="anotherfile.js"
+</code></pre>
+
+We can easy add multiple JavaScript, so it's easy look up code.
+For example, I could make a file for one object.
+
+</script>
+</section>
+
+</section>  <!-- END section with multiple slides -->
+
+
+<section> <!-- START section with multiple slides -->
+<section data-markdown>
+<script type="text/template">
+# Homework
+
+![image](img/homework.gif "Homework")
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Homework
+
+Draw Target
+
+<pre><code data-trim>
+	this.draw = function() {
+			// Draws this target
+			// IMPLEMENT ME!
+	}
+</code></pre>
+
+<pre><code data-trim>
+	// Draws this target
+	fill(255, 0, 0); // Red
+	ellipse(this.x, this.y, 80);
+	fill(255, 255, 255); // White
+	ellipse(this.x, this.y, 50);
+	fill(255, 0, 0); // Red
+	ellipse(this.x, this.y, 20);
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Homework
+
+New Target position using random
+
+<pre><code data-trim>
+	function add_new_targets()
+	{
+	        // Adds a new target at a random location
+	        x = random() * 800;
+	        y = random() * 800;
+	        target = new Target(x, y);
+	        targets.push(target);
+	}
+
+</code></pre>
+
+[p5js.org -> random](https://p5js.org/reference/#/p5/random)
+
+we could also say:
+<pre><code data-trim>
+	        x = random(0,800);
+	        y = random(0,800);
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Homework
+
+WHAT'S THE POINT?
+
+<pre><code data-trim>
+
+	this.points = function(x, y) {
+			// Using the distance from a point (x, y) - calculate how many points that click is worth.
+			distance = this.distanceFrom(x,y);
+			if (distance < 10) { // We drew the inner ring as a circle with width 20 - which means the radius is 10.
+					return 10; // 10 points in the inner ring.
+			} else if (distance < 25) {
+					return 5; // 5 points for the middle ring.
+			} else if (distance < 40) {
+					return 3; // 3 points for the outer ring.
+			} else {
+					return 0; // No points for anything else.
+			}
+	}
+
+</code></pre>
+
+
+</script>
+</section>
+
+
+
+<section data-markdown>
+<script type="text/template">
+## Homework
+
+New Targets
+IMPLEMENT ME! Add a new target every so often.
+<pre><code data-trim>
+
+	if (random() < (1/60)) {
+			add_new_targets();
+	}
+
+</code></pre>
+
+</script>
+</section>
+
+
+
+<section data-markdown>
+<script type="text/template">
+## Homework
+
+But what does this do???
+
+Let's look at a little example
+
+> random example sketch
+
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Homework
+
+Questions?
+
+
+</script>
+</section>
+
+
+
+</section>  <!-- END section with multiple slides -->
+
+<section> <!-- START section with multiple slides -->
+<section data-markdown>
+<script type="text/template">
+# Let's extend this game
+
+Start with in our class folder
+> target_session5
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Let's extend this game
+
+How could we have different targets?
+
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# How could we have different targets?
+
+<pre><code data-trim>
+
+function Target(x, y, shape)
+{
+    // This defines a Target class.
+    this.x = x; // x coordinate of the target
+    this.y = y; // y coordinate of the target
+    this.shape = shape; // the different shape
+</code></pre>
+
+We adding another variable to our function so we can play with this.
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Different Targets
+
+spots we need to add our shape function:
+
+* **this.draw = function()**
+
+Here we are going to define the different shapes to draw
+
+* **When making a new shape**
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Different Targets
+
+Let's check if it still works!
+
+![image](img/worried.gif "worried")
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+## Different Targets
+
+How can we use this function?
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+Make a if statement
+<pre><code data-trim>
+if (shape === 1){
+	...
+}
+</code></pre>
+let's add that to our draw function and check if it works
+
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+add a second shape with **else if**
+<pre><code data-trim>
+	if (shape === 1){
+		...
+	} else if (shape === 2){
+	...
+}
+</code></pre>
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+add another random number when we draw the shapes
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+<pre><code data-trim>
+function add_new_targets()
+{
+        // Adds a new target at a random location
+        x = random() * 800;
+        y = random() * 800;
+        shapeNum = round(random(1,2));
+        target = new Target(x, y, shapeNum);
+        targets.push(target);
+}
+</code></pre>
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+Let's do something with the points!
+Let's add lives
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+* make a variable
+<pre><code data-trim>
+player_lives = 3;
+</code></pre>
+
+* add text
+
+* add to this point function
+
+<pre><code data-trim>
+else if (shape === 2){
+	if (distance < 20) {
+		return 1;
+	}
+}
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Different Targets
+
+Let's minus a live and clear them
+
+*function processClickAt(x, y)*
+<pre><code data-trim>
+	else if (targets[i].shape === 2 ){
+		if (points > 0 && targets[i].clicked == false) {
+				player_lives -= 1;
+			 targets[i].clicked = true;
+	 }
+ }
+</code></pre>
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Let's take a break!
+
+![image](img/break.gif "break")
+
+</script>
+</section>
+
+</section>  <!-- END section with multiple slides -->
+<section> <!-- START section with multiple slides -->
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+![image](img/screens.gif "screens")
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+Make a variable
+
+<pre><code data-trim>
+playScreen = 0;
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+<pre><code data-trim>
+
+	if (playScreen === 0) {
+		// this will be our start screen
+
+	} else if (playScreen === 1) {
+	// this will be our game
+	} else if (playScreen === 2) {
+		// this will be our end screen
+}
+
+</code></pre>
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+Let's make a function for our start screen
+
+
+<pre><code data-trim>
+	function startScreen() {
+	    text(Start Game, width/2,height/2);
+	}
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+Let's have a look what we can do to make the text a bit fancier
+
+[p5.js reference](https://p5js.org/reference)
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+When we click we go to our game
+** function mousePressed() **
+
+<pre><code data-trim>
+	if (playScreen === 0) {
+
+  } else if (playScreen === 1) {
+
+  } else if (playScreen === 2) {
+
+  }
+</code></pre>
+what do we need to change when clicked?
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+<pre><code data-trim>
+	if (playScreen === 0) {
+		playScreen = 1;
+	}
+</code></pre>
+
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+![image](img/mario.gif "mario")
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+But now, when does our game end?
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+add to **draw > else if (playScreen === 1) **
+<pre><code data-trim>
+	if (player_lives === 0){
+		playScreen = 2;
+	}
+</code></pre>
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Multiple screen
+
+and make a end screen function
+<pre><code data-trim>
+	function endScreen() {
+	  text("The End", width/2,height/2);
+	}
+</code></pre>
+
+add to **draw**
+<pre><code data-trim>
+	else if (playScreen === 2) {
+		endScreen();
+	}
+</code></pre>
+
+
+</script>
+</section>
+
+</section>  <!-- END section with multiple slides -->
+
+<section> <!-- START section with multiple slides -->
+
+<section data-markdown>
+<script type="text/template">
+# Images
+
+![image](img/glitter.gif "glitter")
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Images
+
+[p5.js Image](https://p5js.org/reference/#group-Image)
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Images
+
+make a folder for our images
+> **assets**
+
+and let's find a background image
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Images
+
+[LoadImage function](https://p5js.org/reference/#/p5/loadImage)
+
+<pre><code data-trim>
+	var img;
+function preload() {
+  img = loadImage("assets/background.jpg");
+}
+function setup() {
+  image(img, 0, 0);
+}
+</code></pre>
+
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+# Images
+
+<pre><code data-trim>
+	function startScreen() {
+	  image(img, 0, 0);
+	  text("Start Game", width/2,height/2);
+	}
+</code></pre>
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Images
+
+![image](img/yes.gif "yes")
+
+</script>
+</section>
+
+</section>  <!-- END section with multiple slides -->
+
+
+
+<section> <!-- START section with multiple slides -->
+
+<section data-markdown>
+<script type="text/template">
+# Snake Game
+
+Let's have a look at another game
+[Snake Game on p5.js](https://p5js.org/examples/interaction-snake-game.html)
+
+</script>
+</section>
+
+
+</section>  <!-- END section with multiple slides -->
+<section> <!-- START section with multiple slides -->
+
+<section data-markdown>
+<script type="text/template">
+# Homework
+
+Explore more about adding images
+> [p5.js reference: images](https://p5js.org/reference/#group-Image)
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# Homework
+
+Explore adding sound
+
+[The Coding Train: Sound ](https://www.youtube.com/watch?v=Pn1g1wjxl_0)
+
+
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+# See you 26 August at Goldsmiths
+
+12-17
+
+Try to work on your game before!
+
+![image](img/waving.gif "waving")
+
+
+</script>
+</section>
+
+</section>  <!-- END section with multiple slides -->
+
+
+
+
+<!-- END of all the slides -->
+</div>
+</div>
+
+<!-- Javascript reference -->
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	history: true,
+	controls: true,
+
+	// Factor of the display size that should remain empty around the content
+	margin: 0.2,
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+	{ src: 'plugin/markdown/marked.js' },
+	{ src: 'plugin/markdown/markdown.js' },
+	{ src: 'plugin/notes/notes.js', async: true },
+	{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+	]
+	});
+	</script>
+	</body>
+	</html>
