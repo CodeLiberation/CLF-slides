@@ -1,5 +1,5 @@
 #include "ofApp.h"
-//CODE originally designed by Jane Friedhoff 2013
+//CODE originally designed by Jane Friedhoff & Phoenix Perry in 2013
 //updated for OF .9 by Phoenix Perry 2016
 /* When I start programming, I try to brainstorm all the values I'll need to keep track of.
       I make variables to hold each of those values. */
